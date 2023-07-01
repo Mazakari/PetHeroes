@@ -6,6 +6,10 @@ TagManager:
   tags:
   - PlayerSpawnPoint
   - Skins Tab
+  - Borders
+  - Loose
+  - Platform
+  - Window
   layers:
   - Default
   - TransparentFX
