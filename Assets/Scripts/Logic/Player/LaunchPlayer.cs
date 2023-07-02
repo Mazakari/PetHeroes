@@ -27,7 +27,7 @@ public class LaunchPlayer : MonoBehaviour
             Debug.Log("Looser");
     }
        
-    void Update()
+    void FixedUpdate()
     {
         if (_isActive == true)
         {
