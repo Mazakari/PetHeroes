@@ -50,15 +50,9 @@ TagManager:
   - name: Background
     uniqueID: 3130969867
     locked: 0
-  - name: Props
-    uniqueID: 2059394039
-    locked: 0
-  - name: Platforms
-    uniqueID: 2548911301
+  - name: Building
+    uniqueID: 1248920167
     locked: 0
   - name: Player
     uniqueID: 3413164705
-    locked: 0
-  - name: Enemy
-    uniqueID: 2489637695
     locked: 0

@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class LevelCompletePopup : MonoBehaviour
 {
-    [SerializeField] private GameObject _artifactLockedBody;
-
     [Header("Buttons")]
     [Space(10)]
     [SerializeField] private Button _nextLevelButton;
@@ -46,14 +44,6 @@ public class LevelCompletePopup : MonoBehaviour
 
     private void LoadNextLevel() => 
         GameplayCanvas.OnNextLevel?.Invoke();
-
-    public void ShowArtifact(bool locked)
-    {
-        if (!locked)
-        {
-            _artifactLockedBody.SetActive(false);
-        }
-    }
 
     private void ShowInterstitialAds() =>
        _yandexService.API.ShowYandexInterstitial();

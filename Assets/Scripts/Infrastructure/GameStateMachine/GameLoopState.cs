@@ -30,7 +30,6 @@ public class GameLoopState : IState
 
         GameplayCanvas.OnRestartLevel += RestartLevel;
         DeathTrigger.OnDeadZoneEnter += RestartLevel;
-        EnemyCollision.OnEnemyCollision += RestartLevel;
     }
     public void Exit()
     {
@@ -39,7 +38,6 @@ public class GameLoopState : IState
 
         GameplayCanvas.OnRestartLevel -= RestartLevel;
         DeathTrigger.OnDeadZoneEnter -= RestartLevel;
-        EnemyCollision.OnEnemyCollision -= RestartLevel;
     }
 
     private void SetLevelNames()
