@@ -29,7 +29,7 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
 
         _LevelCompletePopup.gameObject.SetActive(false);
 
-        LevelState.OnLevelResultShow += ShowLevelCompletePopup;
+        //LevelState.OnLevelResultShow += ShowLevelCompletePopup;
         GameLoopState.OnNextLevelNameSet += UpdateNextLevel;
         GameLoopState.OnCurrentLevelSet += UpdateCurrentLevel;
 
@@ -40,7 +40,7 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
     private void OnDisable()
     {
         _mainMenuButton.onClick.RemoveAllListeners();
-        LevelState.OnLevelResultShow -= ShowLevelCompletePopup;
+        //LevelState.OnLevelResultShow -= ShowLevelCompletePopup;
     }
 
     private void ShowLevelCompletePopup(bool artifactLocked)
@@ -50,7 +50,6 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
         _levelCellsService.SaveCompletedLevel(artifactLocked);
         _levelCellsService.UnlockNextLevel(_nextLevelName);
 
-        _LevelCompletePopup.ShowArtifact(artifactLocked);
         _LevelCompletePopup.gameObject.SetActive(true);
 
         ShowYandexRateGamePopup();

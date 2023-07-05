@@ -1,5 +1,4 @@
-﻿using Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LoadLevelState : IPayloadedState<string>
 {
@@ -53,28 +52,21 @@ public class LoadLevelState : IPayloadedState<string>
         GameObject spawnPos = GameObject.FindGameObjectWithTag(Constants.PLAYER_SPAWN_POINT_TAG);
         GameObject player = _gameFactory.CreatePlayer(spawnPos);
 
+        SetPlatformReference(player);
+
         _levelCellsService.SetCurrentCell();
-
-        InitTreasureChest();
-
         _gameFactory.CreateLevelHud();
-
-        Transform followTransform = player.GetComponent<Transform>();
-        CinemachineCameraFollow(followTransform);
     }
 
-    private void CinemachineCameraFollow(Transform player)
+    private void SetPlatformReference(GameObject player)
     {
-        CinemachineVirtualCamera cam = Object.FindObjectOfType<CinemachineVirtualCamera>();
-        cam.Follow = player;
-    }
-
-    private static void InitTreasureChest()
-    {
-        TreasureChest chest = Object.FindObjectOfType<TreasureChest>();
-        if (chest)
+        Platform platform = Object.FindObjectOfType<Platform>();
+        if (platform != null)
         {
-            chest.InitChest();
+            if (player.TryGetComponent(out LaunchPlayer launcher))
+            {
+                launcher.SetPlatformReference(platform.transform);
+            }
         }
     }
 }

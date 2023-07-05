@@ -8,15 +8,14 @@ public class PlayerControlsHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        LevelState.OnLevelLoaded += DisableControls;
-        LevelState.OnLevelStart += EnableControls;
-        FinishPlatform.OnLevelFinish += DisableControls;
+        //LevelState.OnLevelLoaded += DisableControls;
+        //LevelState.OnLevelStart += EnableControls;
     }
 
     private void OnDisable()
     {
-        LevelState.OnLevelStart -= EnableControls;
-        FinishPlatform.OnLevelFinish -= DisableControls;
+        //LevelState.OnLevelLoaded -= DisableControls;
+        //LevelState.OnLevelStart -= EnableControls;
     }
 
     private void EnableControls()

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Constants
 {
+    public const string PLAYER_TAG = "Player";
     #region NEW PROGRESS DATA
     public const string PROGRESS_KEY = "ProgressKey";
     public const string INITIAL_SCENE_NAME = "Initial";
