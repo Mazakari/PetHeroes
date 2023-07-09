@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class LaunchPlayer : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D _rb;
+    public Rigidbody2D Rigidbody => _rb;
     private Transform _platform;
 
-    [SerializeField] private  float Force = 800f;
-    [SerializeField] private  float OffSetX = 100f;
+    [SerializeField] private  float _force = 10f;
+    public float Force => _force;
 
     private bool _isActive = false;
+    private Vector2 _startDirection = Vector2.zero;
 
     private void Awake() => 
-        SetRigidbodyToKinematic();
-
+        InitRigidbodyAndStartDirection();
+    
 
     void Update()
     {
@@ -24,12 +26,25 @@ public class LaunchPlayer : MonoBehaviour
         FollowPlatformXPosition();
         ReadPushInput();
     }
+   
     public void SetPlatformReference(Transform platform) =>
        _platform = platform;
 
+    public void AddPlayerLaunchForce(Vector2 direction) =>
+        _rb.AddForce(direction, ForceMode2D.Impulse);
+
+    private void InitRigidbodyAndStartDirection()
+    {
+        SetStartLaunchDirection();
+        SetRigidbodyToKinematic();
+    }
+
+    private void SetStartLaunchDirection() =>
+        _startDirection = new Vector2(0, 1 * _force);
+
     private void SetRigidbodyToKinematic()
     {
-        rb.isKinematic = true;
+        _rb.isKinematic = true;
         _isActive = false;
     }
 
@@ -43,13 +58,11 @@ public class LaunchPlayer : MonoBehaviour
         if (Input.GetButtonDown(GlobalStringVars.PUSH))
         {
             SetRigidbodyToDynamic();
-            AddPlayerLaunchForce();
+            AddPlayerLaunchForce(_startDirection);
             _isActive = true;
         }
     }
 
     private void SetRigidbodyToDynamic() => 
-        rb.isKinematic = false;
-    private void AddPlayerLaunchForce() => 
-        rb.AddForce(new Vector2(OffSetX, Force));
+        _rb.isKinematic = false;
 }
