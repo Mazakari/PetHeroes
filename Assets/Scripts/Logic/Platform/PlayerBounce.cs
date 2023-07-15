@@ -4,15 +4,17 @@ public class PlayerBounce : MonoBehaviour
 {
     [SerializeField] private float _directionChangeDeadZone = 0.1f;
     [SerializeField] private int _forceDecreaseMultiplier = 3;
-    
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision) => 
+        BouncePlayerOff(collision);
+
+    private void BouncePlayerOff(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out LaunchPlayer player))
         {
             CalculateBounceDirection(collision, player);
         }
     }
-
     private void CalculateBounceDirection(Collision2D collision, LaunchPlayer player)
     {
         Vector2 collisionPoint = collision.GetContact(0).point;
@@ -36,10 +38,8 @@ public class PlayerBounce : MonoBehaviour
             player.AddPlayerLaunchForce(newDirection);
         }
     }
-
     private bool BallOutsideDeathZone(float difference) =>
         Mathf.Abs(difference) > _directionChangeDeadZone;
-
     private static float RoundXPosValue(float value) =>
         Mathf.Round(value * 100f) / 100f;
 }

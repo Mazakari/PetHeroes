@@ -60,7 +60,7 @@ public class LoadLevelState : IPayloadedState<string>
 
     private void SetPlatformReference(GameObject player)
     {
-        Platform platform = Object.FindObjectOfType<Platform>();
+        PlatformInput platform = Object.FindObjectOfType<PlatformInput>();
         if (platform != null)
         {
             if (player.TryGetComponent(out LaunchPlayer launcher))

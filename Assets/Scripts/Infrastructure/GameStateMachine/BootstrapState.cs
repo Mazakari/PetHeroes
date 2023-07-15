@@ -35,7 +35,7 @@ public class BootstrapState : IState
 
     private void RegisterServices()
     {
-        //_services.RegisterSingle<IInputService>(new InputService());
+        _services.RegisterSingle<IInputService>(new InputService());
         _services.RegisterSingle<ITimeService>(new TimeService());
         _services.RegisterSingle<IYandexService>(new YandexService(_yandexApi, _services.Single<ITimeService>()));
         _services.RegisterSingle<IAssets>(new AssetProvider());
