@@ -1,12 +1,28 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlatformInput : MonoBehaviour
 {
-    [SerializeField]
-    [Range(10f, 100f)]
-    private float _speed = 10;
+    public float MoveInputX { get; private set; }
 
-    public void MovePlatform() =>
-       transform.Translate(_speed * Input.GetAxisRaw(GlobalStringVars.HORIZONTAL_AXIS) * Time.deltaTime * Vector3.right);
+    private IInputService _inputServie;
 
+    private void OnEnable()
+    {
+        _inputServie = AllServices.Container.Single<IInputService>();
+
+        _inputServie.InputActions.Platform.Move.performed += SetMove;
+        _inputServie.InputActions.Platform.Move.canceled += SetMove;
+    }
+
+    
+    private void OnDisable()
+    {
+        _inputServie.InputActions.Platform.Move.performed -= SetMove;
+        _inputServie.InputActions.Platform.Move.canceled -= SetMove;
+    }
+
+    private void SetMove(InputAction.CallbackContext context) => 
+        MoveInputX = context.ReadValue<Vector2>().x;
 }
