@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField]
-    [Range (10f, 100f)]
-    private float _speed = 10;
-
+    [SerializeField] private PlatformInput _input;
     private float _xPlatformBound;
     private float _platformXSize;
 
@@ -14,7 +11,7 @@ public class Platform : MonoBehaviour
 
     void Update()
     {
-        MovePlatform();
+        //MovePlatform();
         ClampHorizontalMovement();
     }
     private void GetHorizontalClampValues()
@@ -27,8 +24,8 @@ public class Platform : MonoBehaviour
         _xPlatformBound -= _platformXSize / 2f;
     }
 
-    private void MovePlatform() => 
-        transform.Translate(_speed * Input.GetAxisRaw(GlobalStringVars.HORIZONTAL_AXIS) * Time.deltaTime * Vector3.right);
+    //public void MovePlatform(Vector2 direction) =>
+    //   transform.Translate(_speed * direction * Time.deltaTime * Vector3.right);
 
     private void ClampHorizontalMovement() => 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_xPlatformBound, _xPlatformBound), transform.position.y, transform.position.z);
