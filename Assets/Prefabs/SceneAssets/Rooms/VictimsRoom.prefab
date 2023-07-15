@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3353629253732716764
 SpriteRenderer:
@@ -149,6 +149,7 @@ MonoBehaviour:
   - {fileID: 8695847707075232879, guid: 03382073ecf1e1d498a83db91c32e1f2, type: 3}
   - {fileID: 1374238835899078138, guid: 3dcfbc61d4e38f74c8a93fb4cb1b0d80, type: 3}
   _spriteRenderer: {fileID: 3353629253732716764}
+  _roomCollider: {fileID: 372721549217229492}
 --- !u!114 &406485851240115733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,4 +162,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96c84dd5033b4946b54dfaaf6065a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerLayer: 6
   _room: {fileID: 1753300713703469987}

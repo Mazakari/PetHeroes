@@ -23,7 +23,7 @@ public class VictimBasketsControl : MonoBehaviour
     }
     
 
-    private void DeactivateBaskets()
+    public void DeactivateBaskets()
     {
         for (int i = 0; i < _baskets.Length; i++)
         {

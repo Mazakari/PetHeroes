@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class VictimsRoomTrigger : MonoBehaviour
 {
+    [SerializeField] private int _playerLayer;
     [SerializeField] private VictimsRoom _room;
 
     private void OnTriggerEnter2D(Collider2D collider) => 
@@ -9,23 +10,30 @@ public class VictimsRoomTrigger : MonoBehaviour
 
     private void TrySaveVictim(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Player"))
+        if (collider.gameObject.layer == _playerLayer)
         {
-            // Получить ссылку на BasketControl
-            VictimBasketsControl basketsControl = collider.GetComponentInChildren<VictimBasketsControl>();
+            PutVictimInBasketAndActivateNextVictim(collider);
+        }
+    }
 
-            // Получить неактивную корзину
-            VictimBasket basket = basketsControl.GetInactiveBasket();
-            if (basket != null)
-            {
-                // Положить в неактивную корзину Victim
-                Victim victim = _room.SaveCurrentVictim();
-                basket.PlaceVictimInBasket(victim);
+    private void PutVictimInBasketAndActivateNextVictim(Collider2D collider)
+    {
+        // Получить ссылку на BasketControl
+        VictimBasketsControl basketsControl = collider.GetComponentInChildren<VictimBasketsControl>();
 
-                // Включить неактивную корзину
-                basket.gameObject.SetActive(true);
-            }
+        // Получить неактивную корзину
+        VictimBasket basket = basketsControl.GetInactiveBasket();
+        if (basket != null)
+        {
+            // Положить в неактивную корзину Victim
+            Victim victim = _room.GetCurrentVictim();
+            basket.PlaceVictimInBasket(victim);
 
+            // Достать следующую жертву
+            _room.ActivateNextVictim();
+
+            // Включить неактивную корзину
+            basket.gameObject.SetActive(true);
         }
     }
 }
