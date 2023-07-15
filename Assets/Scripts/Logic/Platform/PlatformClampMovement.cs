@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlatformClampMovement : MonoBehaviour
 {
+    [SerializeField] private BoxCollider2D _platformCollider;
     private float _xPlatformBound;
     private float _platformXSize;
 
@@ -16,7 +17,8 @@ public class PlatformClampMovement : MonoBehaviour
         float width = height * Camera.main.aspect;
         _xPlatformBound = width / 2f;
 
-        _platformXSize = transform.localScale.x;
+        //_platformXSize = transform.localScale.x;
+        _platformXSize = _platformCollider.size.x;
         _xPlatformBound -= _platformXSize / 2f;
     }
     private void ClampHorizontalMovement() =>
