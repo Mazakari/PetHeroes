@@ -12,9 +12,20 @@ public class LaunchPlayer : MonoBehaviour
     private bool _isActive = false;
     private Vector2 _startDirection = Vector2.zero;
 
-    private void Awake() => 
+    private IInputService _inputService;
+
+    private void OnEnable()
+    {
+        _inputService = AllServices.Container.Single<IInputService>();
         InitRigidbodyAndStartDirection();
-    
+
+        _inputService.InputActions.Ball.LaunchBall.started += LaunchBall;
+    }
+
+    private void OnDisable()
+    {
+        _inputService.InputActions.Ball.LaunchBall.started -= LaunchBall;
+    }
 
     void Update()
     {
@@ -24,9 +35,16 @@ public class LaunchPlayer : MonoBehaviour
         }
 
         FollowPlatformXPosition();
-        ReadPushInput();
     }
-   
+
+    private void LaunchBall(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        if (_isActive == false)
+        {
+            Launch();
+        }
+    }
+
     public void SetPlatformReference(Transform platform) =>
        _platform = platform;
 
@@ -53,14 +71,12 @@ public class LaunchPlayer : MonoBehaviour
         Vector2 playerPos = new Vector2(_platform.position.x, transform.position.y);
         transform.position = playerPos;
     }
-    private void ReadPushInput()
+    private void Launch()
     {
-        if (Input.GetButtonDown(GlobalStringVars.PUSH))
-        {
-            SetRigidbodyToDynamic();
-            AddPlayerLaunchForce(_startDirection);
-            _isActive = true;
-        }
+        SetRigidbodyToDynamic();
+        AddPlayerLaunchForce(_startDirection);
+
+        _isActive = true;
     }
 
     private void SetRigidbodyToDynamic() => 
