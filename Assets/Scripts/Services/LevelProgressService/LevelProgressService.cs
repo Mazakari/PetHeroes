@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelProgressService : ILevelProgressService
@@ -6,16 +8,35 @@ public class LevelProgressService : ILevelProgressService
     private int _maxPlayerLives;
     public int CurrentPlayerLives { get; private set; }
 
+    private List<FireRoom> _fireRooms;
+
     public event Action OnGameOver;
+    public event Action OnLevelWin;
+
     public LevelProgressService()
     {
         _maxPlayerLives = Constants.MAX_PLAYER_LIVES;
         ResetLives();
+        _fireRooms = new List<FireRoom>();
+    }
+   
+    public void InitFireRooms()
+    {
+        _fireRooms.Clear();
+        _fireRooms = GameObject.FindObjectsOfType<FireRoom>().ToList();
     }
 
-    private void ResetLives()
+    public void CheckIfAllFireRoomsExtinguished()
     {
-        CurrentPlayerLives = _maxPlayerLives;
+        for (int i = 0; i < _fireRooms.Count; i++)
+        {
+            if (_fireRooms[i].InFire)
+            {
+                return;
+            }
+        }
+
+        OnLevelWin?.Invoke();
     }
 
     public void DecreasePlayerLives()
@@ -31,4 +52,7 @@ public class LevelProgressService : ILevelProgressService
             OnGameOver?.Invoke();
         }
     }
+
+    private void ResetLives() =>
+       CurrentPlayerLives = _maxPlayerLives;
 }

@@ -33,6 +33,7 @@ public class GameLoopState : IState
 
         GameplayCanvas.OnRestartLevel += RestartLevel;
         _levelProgressService.OnGameOver += RestartLevel;
+       
     }
     public void Exit()
     {

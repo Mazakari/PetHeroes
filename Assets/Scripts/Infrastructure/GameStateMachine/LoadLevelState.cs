@@ -8,8 +8,16 @@ public class LoadLevelState : IPayloadedState<string>
     private readonly IGameFactory _gameFactory;
     private readonly IPersistentProgressService _progressService;
     private readonly ILevelCellsService _levelCellsService;
+    private readonly ILevelProgressService _levelProgressService;
 
-    public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IPersistentProgressService progressService, ILevelCellsService levelCellsService)
+    public LoadLevelState(
+        GameStateMachine gameStateMachine, 
+        SceneLoader sceneLoader, 
+        LoadingCurtain curtain, 
+        IGameFactory gameFactory, 
+        IPersistentProgressService progressService, 
+        ILevelCellsService levelCellsService, 
+        ILevelProgressService levelProgressService)
     {
         _gameStateMachine = gameStateMachine;
         _sceneLoader = sceneLoader;
@@ -17,6 +25,7 @@ public class LoadLevelState : IPayloadedState<string>
         _gameFactory = gameFactory;
         _progressService = progressService;
         _levelCellsService = levelCellsService;
+        _levelProgressService = levelProgressService;
     }
 
     public void Enter(string sceneName)
@@ -57,6 +66,8 @@ public class LoadLevelState : IPayloadedState<string>
 
         _levelCellsService.SetCurrentCell();
         _gameFactory.CreateLevelHud();
+
+        _levelProgressService.InitFireRooms();
     }
 
     private void SetPlatformReference(GameObject player)

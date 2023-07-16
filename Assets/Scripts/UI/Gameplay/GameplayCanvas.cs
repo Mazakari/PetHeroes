@@ -14,6 +14,9 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
 
     private ILevelCellsService _levelCellsService;
     private IYandexService _yandexService;
+    private ILevelProgressService _levelProgressService;
+    private ITimeService _timeService;
+
 
     public static Action OnNextLevel;
     public static Action OnRestartLevel;
@@ -26,10 +29,12 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
     {
         _levelCellsService = AllServices.Container.Single<ILevelCellsService>();
         _yandexService = AllServices.Container.Single<IYandexService>();
+        _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
+        _timeService = AllServices.Container.Single<ITimeService>();
 
         _LevelCompletePopup.gameObject.SetActive(false);
 
-        //LevelState.OnLevelResultShow += ShowLevelCompletePopup;
+        _levelProgressService.OnLevelWin += ShowLevelCompletePopup;
         GameLoopState.OnNextLevelNameSet += UpdateNextLevel;
         GameLoopState.OnCurrentLevelSet += UpdateCurrentLevel;
 
@@ -40,14 +45,19 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
     private void OnDisable()
     {
         _mainMenuButton.onClick.RemoveAllListeners();
-        //LevelState.OnLevelResultShow -= ShowLevelCompletePopup;
+        _levelProgressService.OnLevelWin -= ShowLevelCompletePopup;
+        GameLoopState.OnNextLevelNameSet -= UpdateNextLevel;
+        GameLoopState.OnCurrentLevelSet -= UpdateCurrentLevel;
+
+        _timeService.ResumeGame();
     }
 
-    private void ShowLevelCompletePopup(bool artifactLocked)
+    private void ShowLevelCompletePopup()
     {
-        SetArtifactImage();
+        _timeService.PauseGame();
+        //SetArtifactImage();
 
-        _levelCellsService.SaveCompletedLevel(artifactLocked);
+        //_levelCellsService.SaveCompletedLevel(artifactLocked);
         _levelCellsService.UnlockNextLevel(_nextLevelName);
 
         _LevelCompletePopup.gameObject.SetActive(true);
