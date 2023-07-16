@@ -9,5 +9,3 @@
         InputActions.Ball.Enable();
     }
 }
-
-

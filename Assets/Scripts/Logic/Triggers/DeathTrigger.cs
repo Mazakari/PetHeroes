@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DeathTrigger : MonoBehaviour
@@ -10,7 +9,7 @@ public class DeathTrigger : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private ItemSound _itemSound;
 
-    public static event Action OnDeadZoneEnter;
+    
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -22,8 +21,7 @@ public class DeathTrigger : MonoBehaviour
                 player.Respawn();
             }
             
-            // Send callback for GameplayState
-            //OnDeadZoneEnter?.Invoke();
+           
         }
     }
 

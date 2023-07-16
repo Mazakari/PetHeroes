@@ -3,7 +3,11 @@ using UnityEngine;
 
 public class Constants
 {
+    #region PLAYER
     public const string PLAYER_TAG = "Player";
+    public const int MAX_PLAYER_LIVES = 3;
+    #endregion
+
     #region NEW PROGRESS DATA
     public const string PROGRESS_KEY = "ProgressKey";
     public const string INITIAL_SCENE_NAME = "Initial";
@@ -38,6 +42,4 @@ public class Constants
     public const string LOCALIZARION_EN = "en";
     public const string LOCALIZARION_TR = "tr";
     #endregion
-
-
 }

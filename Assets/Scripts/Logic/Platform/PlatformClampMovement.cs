@@ -17,7 +17,6 @@ public class PlatformClampMovement : MonoBehaviour
         float width = height * Camera.main.aspect;
         _xPlatformBound = width / 2f;
 
-        //_platformXSize = transform.localScale.x;
         _platformXSize = _platformCollider.size.x;
         _xPlatformBound -= _platformXSize / 2f;
     }

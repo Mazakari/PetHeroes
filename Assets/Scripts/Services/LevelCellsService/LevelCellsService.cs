@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using static GameMetaData;
 
-public class LevelCellsService : ILevelCellsService
+public partial class LevelCellsService : ILevelCellsService
 {
     private LevelCell[] _levels;
     public LevelCell[] Levels => _levels;
@@ -152,5 +152,3 @@ public class LevelCellsService : ILevelCellsService
         return index;
     }
 }
-
-
