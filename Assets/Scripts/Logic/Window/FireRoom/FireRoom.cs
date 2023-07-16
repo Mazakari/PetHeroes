@@ -13,6 +13,13 @@ public class FireRoom : MonoBehaviour
     private int _currentFireIndex;
     private float _currentFireTimer = 0;
 
+    private ILevelProgressService _levelProgressService;
+
+    private void OnEnable()
+    {
+        _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
+    }
+
     private void Start()
     {
         InitFireRoom();
@@ -93,7 +100,7 @@ public class FireRoom : MonoBehaviour
     {
         InFire = false;
         _roomCollider.enabled = false;
-        //  TO DO: вызвать метод проверки пожара
+        _levelProgressService.CheckIfAllFireRoomsExtinguished();
     }
 
 
