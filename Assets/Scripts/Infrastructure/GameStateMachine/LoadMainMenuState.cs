@@ -54,15 +54,9 @@ public class LoadMainMenuState : IPayloadedState<string>
     {
         _gameFactory.CreateMainMenulHud();
 
+#if !UNITY_EDITOR
 
-
-#if !UNITY_EDITOR || !PLATFORM_ANDROID
-
-        if (SystemInfo.deviceType != DeviceType.Handheld)
-        {
-            CheckPlayerAuth();
-        }
-        
+        CheckPlayerAuth();
 #endif
     }
 

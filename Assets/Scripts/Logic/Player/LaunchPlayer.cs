@@ -37,22 +37,17 @@ public class LaunchPlayer : MonoBehaviour
         FollowPlatformXPosition();
     }
 
-    private void LaunchBall(UnityEngine.InputSystem.InputAction.CallbackContext context)
-    {
-        if (_isActive == false)
-        {
-            Launch();
-        }
-    }
-
+    
     public void SetPlatformReference(Transform platform) =>
        _platform = platform;
 
     public void AddPlayerLaunchForce(Vector2 direction) =>
         _rb.AddForce(direction, ForceMode2D.Impulse);
 
-    private void InitRigidbodyAndStartDirection()
+    public void InitRigidbodyAndStartDirection()
     {
+        _isActive = false;
+        _rb.velocity = Vector2.zero;
         SetStartLaunchDirection();
         SetRigidbodyToKinematic();
     }
@@ -81,4 +76,12 @@ public class LaunchPlayer : MonoBehaviour
 
     private void SetRigidbodyToDynamic() => 
         _rb.isKinematic = false;
+
+    private void LaunchBall(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        if (_isActive == false)
+        {
+            Launch();
+        }
+    }
 }

@@ -19,32 +19,25 @@ public class LoadProgressState : IState
     public void Enter()
     {
         Debug.Log("LoadProgressState");
-#if UNITY_EDITOR || PLATFORM_ANDROID
+#if UNITY_EDITOR
         LoadProgressOrInitNew(true);
         _gameStateMachine.Enter<LoadMainMenuState, string>(Constants.MAIN_MENU_SCENE_NAME);
 #endif
 
-#if!UNITY_EDITOR || !PLATFORM_ANDROID
-        if (SystemInfo.deviceType != DeviceType.Handheld)
-        {
-         _yandexService.API.OnAuthorizedStatusResponse += LoadPlayerProgress;
+#if!UNITY_EDITOR
+        _yandexService.API.OnAuthorizedStatusResponse += LoadPlayerProgress;
         _yandexService.API.OnYandexProgressCopied += LoadProgressFromCloud;
 
         CheckPlayerAuth();
-        }
-       
 #endif
     }
 
     public void Exit()
     {
-#if !UNITY_EDITOR || !PLATFORM_ANDROID
-        if (SystemInfo.deviceType != DeviceType.Handheld)
-        {
-         _yandexService.API.OnAuthorizedStatusResponse -= LoadPlayerProgress;
+#if !UNITY_EDITOR
+        _yandexService.API.OnAuthorizedStatusResponse -= LoadPlayerProgress;
         _yandexService.API.OnYandexProgressCopied -= LoadProgressFromCloud;
-        }
-       
+      
 #endif
     }
 

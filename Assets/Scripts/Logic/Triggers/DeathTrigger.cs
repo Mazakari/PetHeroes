@@ -5,6 +5,7 @@ public class DeathTrigger : MonoBehaviour
 {
     [SerializeField] private int _playerLayer;
 
+
     [Space(10)]
     [Header("Audio")]
     [SerializeField] private ItemSound _itemSound;
@@ -16,9 +17,13 @@ public class DeathTrigger : MonoBehaviour
         if (collider.gameObject.layer == _playerLayer)
         {
             PlayItemSound();
-
+            if (collider.TryGetComponent(out PlayerRespawn player))
+            {
+                player.Respawn();
+            }
+            
             // Send callback for GameplayState
-            OnDeadZoneEnter?.Invoke();
+            //OnDeadZoneEnter?.Invoke();
         }
     }
 

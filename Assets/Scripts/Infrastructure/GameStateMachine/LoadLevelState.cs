@@ -53,6 +53,7 @@ public class LoadLevelState : IPayloadedState<string>
         GameObject player = _gameFactory.CreatePlayer(spawnPos);
 
         SetPlatformReference(player);
+        SetSpawnPointReferrence(spawnPos, player);
 
         _levelCellsService.SetCurrentCell();
         _gameFactory.CreateLevelHud();
@@ -67,6 +68,14 @@ public class LoadLevelState : IPayloadedState<string>
             {
                 launcher.SetPlatformReference(platform.transform);
             }
+        }
+    }
+
+    private void SetSpawnPointReferrence(GameObject spawnPos, GameObject player)
+    {
+        if (player.TryGetComponent(out PlayerRespawn respawn))
+        {
+            respawn.SetRespawnPointReferrence(spawnPos.transform);
         }
     }
 }
