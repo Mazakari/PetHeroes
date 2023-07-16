@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class FireRoom : MonoBehaviour
 {
+    public bool InFire {get; private set;}
+
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private BoxCollider2D _roomCollider;
     [SerializeField] private Sprite[] _fireSprites;
@@ -18,18 +20,44 @@ public class FireRoom : MonoBehaviour
 
     private void Update()
     {
-        _currentFireTimer += Time.deltaTime;
-        if (_currentFireTimer >= _maxFireTimer)
-        {
-            _currentFireTimer = 0;
-            FireStatus();
+        FireTimer();
+    }
 
+    public void DecreaseCurrentFireIndex()
+    {
+        _currentFireIndex--;
+        _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _fireSprites.Length - 1);
+        if (_currentFireIndex > 0)
+        {
+            ResetFireTimer();
+        }
+        else
+        {
+            ExtiguishFire();
+        }
+        ActivateCurrentFire();
+
+    }
+
+    private void FireTimer()
+    {
+        if(InFire == true)
+        {
+            _currentFireTimer += Time.deltaTime;
+            if (_currentFireTimer >= _maxFireTimer)
+            {
+                ResetFireTimer();
+                FireStatus();
+
+            }
         }
     }
+
     private void InitFireRoom()
     {
         if (_fireSprites.Length > 0)
         {
+            InFire = true;
             InitFireArray();
             ActivateCurrentFire();
         }
@@ -57,7 +85,16 @@ public class FireRoom : MonoBehaviour
 
     }
 
-   
+    private void ResetFireTimer()
+    {
+        _currentFireTimer = 0;
+    }
+    private void ExtiguishFire()
+    {
+        InFire = false;
+        _roomCollider.enabled = false;
+        //  TO DO: вызвать метод проверки пожара
+    }
 
-        
+
 }
