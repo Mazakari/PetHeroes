@@ -3,7 +3,11 @@ using UnityEngine;
 public class VictimScores : MonoBehaviour
 {
     [SerializeField] private int _playerLayer;
+    [SerializeField] private ShowVictimScore[] _victimScores;
+
     private int _totalScores = 0;
+    private  int _score;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,7 +20,13 @@ public class VictimScores : MonoBehaviour
                 {
                     if (basketsControl.Basket[i].gameObject.activeSelf)
                     {
+                        _score = basketsControl.Basket[i].SavedVictim.GetScore();
+                        if( i < _victimScores.Length - 1)
+                        {
+                         _victimScores[i].ShowScoreText(_score);
+                        }
                         _totalScores += basketsControl.Basket[i].SavedVictim.GetScore();
+
                         Debug.Log($"Scores = {_totalScores}");
                     }
                 }
@@ -24,5 +34,7 @@ public class VictimScores : MonoBehaviour
                 basketsControl.DeactivateBaskets();
             }
         }
+
     }
+    
 }
