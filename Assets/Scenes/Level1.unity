@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1870871521405016273, guid: b0f94853701e01b4fb8f2ec3cda3ece8, type: 3}
+      propertyPath: m_Name
+      value: CanvasRightBasketScore
+      objectReference: {fileID: 0}
     - target: {fileID: 5964155452283192762, guid: b0f94853701e01b4fb8f2ec3cda3ece8, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -175,6 +179,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6621913084942024271, guid: b0f94853701e01b4fb8f2ec3cda3ece8, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621913084942024271, guid: b0f94853701e01b4fb8f2ec3cda3ece8, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697588965294873803, guid: b0f94853701e01b4fb8f2ec3cda3ece8, type: 3}
+      propertyPath: _totalScoreCount
+      value: 
+      objectReference: {fileID: 3550949610698234430, guid: 4d0e4ad1ba13e5e459f03d8a39576526, type: 3}
     - target: {fileID: 7043445778247291370, guid: b0f94853701e01b4fb8f2ec3cda3ece8, type: 3}
       propertyPath: m_Name
       value: Platform
