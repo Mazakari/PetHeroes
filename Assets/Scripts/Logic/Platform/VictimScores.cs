@@ -30,16 +30,14 @@ public class VictimScores : MonoBehaviour
                         Debug.Log($"Scores = {_totalScores}");
                     }
                 }
-               // _totalScoreCount.ShowTotalScoreText(_totalScores);
+                _totalScoreCount.ShowTotalScoreText(_totalScores);
                 basketsControl.DeactivateBaskets();
             }
         }
 
     }
 
-    public void SetTotalScoreReferrence(TotalScoreCount totalScoreCount )
-    {
+    public void SetTotalScoreReferrence(TotalScoreCount totalScoreCount) => 
         _totalScoreCount = totalScoreCount;
-    }
-    
+
 }

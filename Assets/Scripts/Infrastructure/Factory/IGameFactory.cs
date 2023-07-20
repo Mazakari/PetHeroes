@@ -8,7 +8,8 @@ public interface IGameFactory : IService
 
     GameObject CreatePlayer(GameObject at);
 
-    void CreateLevelHud();
+    //void CreateLevelHud();
+    GameObject CreateLevelHud();
     void CreateMainMenulHud();
     GameObject CreateLevelCell();
     void CreateVolumeControl();
