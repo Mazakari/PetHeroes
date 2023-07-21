@@ -5,13 +5,14 @@ using System.Collections;
 public class ShowVictimScore : MonoBehaviour
 {
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private float _fadeStep = 0.01f;
     private Color _scoreColor;
-    private float _fadeStep = 0.01f;
+    
 
     private void OnEnable()
     {
         _scoreColor = _scoreText.color;
-        _scoreText.enabled = true;
+        _scoreText.enabled = false;
     }
 
     public void ShowScoreText(int score)
@@ -37,5 +38,7 @@ public class ShowVictimScore : MonoBehaviour
           alpha -= _fadeStep;
           yield return new WaitForSeconds(_fadeStep);
         }
+
+        SetColorAlpha(0);
     }
 }
