@@ -1,43 +1,41 @@
 using UnityEngine;
 using TMPro;
-
+using System.Collections;
 
 public class ShowVictimScore : MonoBehaviour
 {
-    private const float DISPLAY_TIME = 2f;
     [SerializeField] private TMP_Text _scoreText;
     private Color _scoreColor;
-    private float _fadeState = 0.01f;
+    private float _fadeStep = 0.01f;
+
     private void OnEnable()
     {
         _scoreColor = _scoreText.color;
-        _scoreText.enabled = false;
+        _scoreText.enabled = true;
     }
 
     public void ShowScoreText(int score)
     {
-
         _scoreText.text = score.ToString();
-        SetColorAlpha(1f);
         _scoreText.enabled = true;
-        Invoke("DisableText", DISPLAY_TIME);
+        StartCoroutine(FadeOut());
     }
-
-    private void DisableText()
-    {
-        SetColorAlpha(0);
-    }
+    
     private void SetColorAlpha(float a)
     {
         a = Mathf.Clamp01(a);
         _scoreColor.a = a;
         _scoreText.color = _scoreColor;
     }
-    private void FadeInColor()
-    {
-        for (int i = 0; i < 1; )
-        {
 
+    private IEnumerator FadeOut()
+    {
+        float alpha = 1;
+        while (alpha > 0)
+        {
+          SetColorAlpha(alpha);
+          alpha -= _fadeStep;
+          yield return new WaitForSeconds(_fadeStep);
         }
     }
 }

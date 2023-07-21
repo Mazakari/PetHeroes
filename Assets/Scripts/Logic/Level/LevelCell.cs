@@ -44,7 +44,7 @@ public class LevelCell : MonoBehaviour
     public void InitLevelCell(int levelNumber, string levelName, bool levelLocked, Sprite artifactSprite, bool artifactLocked)
     {
         InitLevelData(levelNumber, levelName, levelLocked, artifactSprite, artifactLocked);
-        InitArtifactData();
+        //InitArtifactData();
     }
 
     private void InitLevelData(int levelNumber, string levelName, bool levelLocked, Sprite artifactSprite, bool artifactLocked)
