@@ -8,10 +8,14 @@ public class LevelProgressService : ILevelProgressService
     private int _maxPlayerLives;
     public int CurrentPlayerLives { get; private set; }
 
+    private int _playerScores = 0;
+    public int PlayerScores => _playerScores;
+
     private List<FireRoom> _fireRooms;
 
     public event Action OnGameOver;
     public event Action OnLevelWin;
+    public event Action OnTotalScoresChanged;
 
     public LevelProgressService()
     {
@@ -51,6 +55,12 @@ public class LevelProgressService : ILevelProgressService
             // Send callback for GameplayState
             OnGameOver?.Invoke();
         }
+    }
+
+    public void AddScores(int value)
+    {
+        _playerScores += value;
+        OnTotalScoresChanged?.Invoke();
     }
 
     private void ResetLives() =>

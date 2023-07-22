@@ -53,11 +53,10 @@ public class LoadLevelState : IPayloadedState<string>
         GameObject spawnPos = GameObject.FindGameObjectWithTag(Constants.PLAYER_SPAWN_POINT_TAG);
         GameObject player = _gameFactory.CreatePlayer(spawnPos);
         PlatformInput platform = Object.FindObjectOfType<PlatformInput>();
-        GameObject gameplayCanvas = _gameFactory.CreateLevelHud();
+        _gameFactory.CreateLevelHud();
 
         SetPlatformReferrence(platform, player);
         SetSpawnPointReferrence(spawnPos, player);
-        SetScoreCounterReferrence(platform, gameplayCanvas);
     }
     private void SetPlatformReferrence(PlatformInput platform, GameObject player)
     {
@@ -76,14 +75,7 @@ public class LoadLevelState : IPayloadedState<string>
             respawn.SetRespawnPointReferrence(spawnPos.transform);
         }
     }
-    private void SetScoreCounterReferrence(PlatformInput platform, GameObject gameplayCanvas)
-    {
-        TotalScoreCount counter = gameplayCanvas.GetComponentInChildren<TotalScoreCount>();
-        if (platform.TryGetComponent(out VictimScores scores))
-        {
-            scores.SetTotalScoreReferrence(counter);
-        }
-    }
+    
 
     private void InitServices()
     {

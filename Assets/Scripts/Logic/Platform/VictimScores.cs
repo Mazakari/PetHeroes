@@ -4,11 +4,16 @@ public class VictimScores : MonoBehaviour
 {
     [SerializeField] private int _playerLayer;
     [SerializeField] private ShowVictimScore[] _victimScores;
-    private TotalScoreCount _totalScoreCount;
 
     private int _totalScores = 0;
     private  int _score;
 
+    private ILevelProgressService _progressService;
+
+    private void OnEnable()
+    {
+        _progressService = AllServices.Container.Single<ILevelProgressService>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,14 +35,10 @@ public class VictimScores : MonoBehaviour
                         Debug.Log($"Scores = {_totalScores}");
                     }
                 }
-                _totalScoreCount.ShowTotalScoreText(_totalScores);
+                //_totalScoreCount.ShowTotalScoreText(_totalScores);
+                _progressService.AddScores(_totalScores);
                 basketsControl.DeactivateBaskets();
             }
         }
-
     }
-
-    public void SetTotalScoreReferrence(TotalScoreCount totalScoreCount) => 
-        _totalScoreCount = totalScoreCount;
-
 }

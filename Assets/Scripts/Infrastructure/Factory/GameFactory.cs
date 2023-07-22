@@ -14,9 +14,6 @@ public class GameFactory : IGameFactory
     public GameObject CreatePlayer(GameObject at) =>
         InstantiateRegistered(AssetPath.PLAYER_PREFAB_PATH, at.transform.position);
 
-    //public void CreateLevelHud() =>
-    //   InstantiateRegistered(AssetPath.LEVEL_CANVAS_PATH);
-
     public GameObject CreateLevelHud() =>
        InstantiateRegistered(AssetPath.LEVEL_CANVAS_PATH);
 
