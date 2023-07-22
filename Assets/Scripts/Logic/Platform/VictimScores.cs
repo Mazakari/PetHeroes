@@ -35,7 +35,6 @@ public class VictimScores : MonoBehaviour
                         Debug.Log($"Scores = {_totalScores}");
                     }
                 }
-                //_totalScoreCount.ShowTotalScoreText(_totalScores);
                 _progressService.AddScores(_totalScores);
                 basketsControl.DeactivateBaskets();
             }

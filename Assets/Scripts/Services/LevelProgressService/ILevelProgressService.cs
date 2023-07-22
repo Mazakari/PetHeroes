@@ -13,4 +13,5 @@ public interface ILevelProgressService : IService
     void CheckIfAllFireRoomsExtinguished();
     void DecreasePlayerLives();
     void InitFireRooms();
+    void ResetScores();
 }
