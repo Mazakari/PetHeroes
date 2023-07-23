@@ -6,13 +6,12 @@ public class MoneyDropable : MonoBehaviour, IDropable
 
     private ILevelProgressService _levelProgressService;
 
-    private void OnEnable() => 
-        _levelProgressService = AllServices.Container.Single<LevelProgressService>();
+    [SerializeField] private PlatformCollision _platformCollision;
 
-    public void Drop()
+    private void OnEnable()
     {
-        // TO DO Get money from bonus pool
-        // Drop from the drop point
+        _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
+        _platformCollision.SetDropableReference(this);
     }
 
     public void Activate() => 

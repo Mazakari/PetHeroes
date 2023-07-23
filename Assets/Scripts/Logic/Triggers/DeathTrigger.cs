@@ -28,7 +28,7 @@ public class DeathTrigger : MonoBehaviour
         }
     }
 
-    private static void RespawnPlayer(Collider2D collider)
+    private void RespawnPlayer(Collider2D collider)
     {
         if (collider.TryGetComponent(out PlayerRespawn player))
         {

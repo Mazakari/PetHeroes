@@ -13,11 +13,8 @@ public class TotalScoreCount : MonoBehaviour
         _levelProgressService.OnTotalScoresChanged += UpdateScoreCounter;
     }
 
-    private void OnDisable()
-    {
-        _levelProgressService.ResetScores();
+    private void OnDisable() => 
         _levelProgressService.OnTotalScoresChanged -= UpdateScoreCounter;
-    }
 
     private void UpdateScoreCounter() => 
         _totalScoreText.text = _levelProgressService.PlayerScores.ToString();

@@ -43,9 +43,16 @@ public class LoadLevelState : IPayloadedState<string>
     {
         InitServices();
         InitGameWorld();
-       
+        ResetTotalLevelScores();
         InformProgressReaders();
+
         _gameStateMachine.Enter<GameLoopState>();
+    }
+
+    private void InitServices()
+    {
+        _levelCellsService.SetCurrentCell();
+        _levelProgressService.InitFireRooms();
     }
 
     private void InitGameWorld()
@@ -75,13 +82,10 @@ public class LoadLevelState : IPayloadedState<string>
             respawn.SetRespawnPointReferrence(spawnPos.transform);
         }
     }
-    
 
-    private void InitServices()
-    {
-        _levelCellsService.SetCurrentCell();
-        _levelProgressService.InitFireRooms();
-    }
+    private void ResetTotalLevelScores() =>
+       _levelProgressService.ResetScores();
+   
 
     private void InformProgressReaders()
     {
