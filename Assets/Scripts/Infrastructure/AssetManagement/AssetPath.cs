@@ -31,7 +31,7 @@ public static class AssetPath
 
     #region DROPABLES
     public const string MONEY_DROPABLE_PREFAB_PATH = "Prefabs/Dropables/Monery_Dropable";
-    public const string FIRE_DROPABLE_PREFAB_PATH = "Prefabs/Dropables/Monery_Dropable";
+    public const string FIRE_DROPABLE_PREFAB_PATH = "Prefabs/Dropables/Fire_Dropable";
     #endregion
 
 }

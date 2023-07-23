@@ -10,4 +10,7 @@ public class VictimBasket : MonoBehaviour
         SavedVictim = victim;
         SpriteRenderer.sprite = SavedVictim.GetSprite();
     }
+
+    public void ClearSavedVictim() => 
+        SavedVictim = null;
 }

@@ -3,31 +3,62 @@ using UnityEngine;
 public class PlatformCollision : MonoBehaviour
 {
     [SerializeField] private int _platform;
+    [SerializeField] private int _deathTrigger;
     [SerializeField] private Rigidbody2D _platformRigidbody;
-    private IDropable _dropable;
+
+    private IDropableItem _dropable;
+    private IDropService _dropService;
 
     [Space(10)]
     [Header("Audio")]
     [SerializeField] private ItemSound _itemSound;
 
+    private void OnEnable() => 
+        _dropService = AllServices.Container.Single<IDropService>();
+
     private void OnTriggerEnter2D(Collider2D collider) =>
-        CollideWithPlatform(collider);
+        CollideWithObject(collider);
 
-    public void SetDropableReference(IDropable dropable) =>
+    public void SetDropableReference(IDropableItem dropable) =>
         _dropable = dropable;
+    public void ActivateDropabable()
+    {
+        transform.parent.gameObject.SetActive(true);
+        _platformRigidbody.isKinematic = false;
+    }
 
-    private void CollideWithPlatform(Collider2D collider)
+    public void ResetDropabable()
+    {
+        transform.parent.gameObject.SetActive(false);
+        _platformRigidbody.isKinematic = true;
+        _platformRigidbody.velocity = Vector3.zero;
+        _platformRigidbody.gameObject.transform.position = Vector3.zero;
+    }
+
+    private void CollideWithObject(Collider2D collider)
     {
         if (collider.gameObject.layer == _platform)
         {
-            PlayItemSound();
-            ActivateDroppableEffect();
-            ResetDropabable();
+            UseDroppableAndPoolIt();
+            return;
+        }
+        if (collider.gameObject.layer == _deathTrigger)
+        {
+            PoolDropable();
+            return;
         }
     }
+    private void UseDroppableAndPoolIt()
+    {
+        PlayItemSound();
+        ActivateDroppableEffect();
+        PoolDropable();
+    }
+    private void PoolDropable() => 
+        _dropService.PoolDroppable(transform.parent.gameObject);
 
     private void ActivateDroppableEffect() => 
-        _dropable.Activate();
+        _dropable.Use();
 
     private void PlayItemSound()
     {
@@ -35,12 +66,5 @@ public class PlatformCollision : MonoBehaviour
         {
             _itemSound.Play();
         }
-    }
-
-    private void ResetDropabable()
-    {
-        gameObject.SetActive(false);
-        _platformRigidbody.isKinematic = true;
-        _platformRigidbody.velocity = Vector3.zero;
     }
 }

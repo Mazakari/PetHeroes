@@ -3,11 +3,6 @@ using UnityEngine.UI;
 
 public class LevelCompletePopup : MonoBehaviour
 {
-    [Header("Buttons")]
-    [Space(10)]
-    [SerializeField] private Button _nextLevelButton;
-    [SerializeField] private Button _restartButton;
-
     [Space(10)]
     [Header("Audio")]
     [SerializeField] private ItemSound _itemSound;
@@ -24,25 +19,16 @@ public class LevelCompletePopup : MonoBehaviour
 #if !UNITY_EDITOR
         ShowInterstitialAds();
 #endif
-        _nextLevelButton.onClick.AddListener(LoadNextLevel);
-        _restartButton.onClick.AddListener(RestartLevel);
-
         // SaveProgress
         _saveLoadService.SaveProgress();
 
         _itemSound.Play();
     }
 
-    private void OnDisable()
-    {
-        _nextLevelButton.onClick.RemoveAllListeners();
-        _restartButton.onClick.RemoveAllListeners();
-    }
-
-    private void RestartLevel() => 
+    public void RestartLevel() => 
         GameplayCanvas.OnRestartLevel?.Invoke();
 
-    private void LoadNextLevel() => 
+    public void LoadNextLevel() => 
         GameplayCanvas.OnNextLevel?.Invoke();
 
     private void ShowInterstitialAds() =>

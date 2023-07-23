@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoneyDropable : MonoBehaviour, IDropable
+public class MoneyDropable : MonoBehaviour, IDropableItem
 {
     [SerializeField] private int _amonut = 10;
 
@@ -14,6 +14,13 @@ public class MoneyDropable : MonoBehaviour, IDropable
         _platformCollision.SetDropableReference(this);
     }
 
-    public void Activate() => 
+    public void ActivateDropable() => 
+        _platformCollision.ActivateDropabable();
+
+    public void ResetDropable() => 
+        _platformCollision.ResetDropabable();
+
+    public void Use() => 
         _levelProgressService.AddScores(_amonut);
+
 }

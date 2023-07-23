@@ -28,9 +28,7 @@ public class VictimBasketsControl : MonoBehaviour
         for (int i = 0; i < _baskets.Length; i++)
         {
             _baskets[i].gameObject.SetActive(false);
+            _baskets[i].ClearSavedVictim();
         }
     }
-
-
-
 }

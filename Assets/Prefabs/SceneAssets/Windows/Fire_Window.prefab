@@ -93,10 +93,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2351576761574910193}
     m_Modifications:
-    - target: {fileID: 151576630272361646, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
-      propertyPath: _maxFireTimer
-      value: 10
-      objectReference: {fileID: 0}
+    - target: {fileID: 2957102647817875647, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
+      propertyPath: _drop
+      value: 
+      objectReference: {fileID: 5161635215736817455}
     - target: {fileID: 4088782930690227921, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
       propertyPath: m_Name
       value: FireRoom
@@ -148,43 +148,21 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4088782930690227921, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1184531733800744342}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
 --- !u!4 &807050254386750367 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6302251203775471420, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
   m_PrefabInstance: {fileID: 6648773175919049891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6800345133183039501 stripped
+--- !u!114 &5161635215736817455 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 151576630272361646, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2009977742848637836, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
   m_PrefabInstance: {fileID: 6648773175919049891}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7276525705405678194}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c0ee3bc026790439e0d829f4d81634, type: 3}
+  m_Script: {fileID: 11500000, guid: af6defebad103a04b87a01f1ce52896a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7276525705405678194 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4088782930690227921, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
-  m_PrefabInstance: {fileID: 6648773175919049891}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1184531733800744342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7276525705405678194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f5379ed54af3e44947f932859df15b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerLayer: 6
-  _room: {fileID: 6800345133183039501}

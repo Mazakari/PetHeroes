@@ -9,6 +9,7 @@ public class LoadLevelState : IPayloadedState<string>
     private readonly IPersistentProgressService _progressService;
     private readonly ILevelCellsService _levelCellsService;
     private readonly ILevelProgressService _levelProgressService;
+    private readonly IDropService _dropService;
 
     public LoadLevelState(
         GameStateMachine gameStateMachine, 
@@ -17,7 +18,8 @@ public class LoadLevelState : IPayloadedState<string>
         IGameFactory gameFactory, 
         IPersistentProgressService progressService, 
         ILevelCellsService levelCellsService, 
-        ILevelProgressService levelProgressService)
+        ILevelProgressService levelProgressService,
+        IDropService dropService)
     {
         _gameStateMachine = gameStateMachine;
         _sceneLoader = sceneLoader;
@@ -26,6 +28,7 @@ public class LoadLevelState : IPayloadedState<string>
         _progressService = progressService;
         _levelCellsService = levelCellsService;
         _levelProgressService = levelProgressService;
+        _dropService = dropService;
     }
 
     public void Enter(string sceneName)
@@ -53,6 +56,7 @@ public class LoadLevelState : IPayloadedState<string>
     {
         _levelCellsService.SetCurrentCell();
         _levelProgressService.InitFireRooms();
+        _dropService.InitDropablesPools();
     }
 
     private void InitGameWorld()

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2832988067418601987}
   - component: {fileID: 3044575984222614062}
   - component: {fileID: 151576630272361646}
+  - component: {fileID: 2957102647817875647}
+  - component: {fileID: 2009977742848637836}
   m_Layer: 0
   m_Name: FireRoom
   m_TagString: Untagged
@@ -150,4 +152,30 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 47ccc16614533a8428cdb64112f374ac, type: 3}
   - {fileID: 21300000, guid: 5fe402cbdb863704fbde9a232839765a, type: 3}
   - {fileID: 21300000, guid: c82e328f9d7b5fc4fa53c32bc6c52afb, type: 3}
-  _maxFireTimer: 3
+  _maxFireTimer: 10
+--- !u!114 &2957102647817875647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4088782930690227921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f5379ed54af3e44947f932859df15b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLayer: 6
+  _room: {fileID: 151576630272361646}
+--- !u!114 &2009977742848637836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4088782930690227921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6defebad103a04b87a01f1ce52896a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

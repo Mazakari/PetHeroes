@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5920066364773977813}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3252285140347735822
 Rigidbody2D:
@@ -321,5 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _platform: 7
+  _deathTrigger: 9
   _platformRigidbody: {fileID: 3252285140347735822}
   _itemSound: {fileID: 1253946416042967217}

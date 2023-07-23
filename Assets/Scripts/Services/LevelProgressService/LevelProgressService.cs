@@ -63,8 +63,11 @@ public class LevelProgressService : ILevelProgressService
         OnTotalScoresChanged?.Invoke();
     }
 
-    public void ResetScores() => 
-        AddScores(0);
+    public void ResetScores()
+    {
+        _playerScores = 0;
+        OnTotalScoresChanged?.Invoke();
+    }
 
     private void ResetLives() =>
        CurrentPlayerLives = _maxPlayerLives;
