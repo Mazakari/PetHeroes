@@ -8,6 +8,7 @@ public interface ILevelProgressService : IService
     event Action OnGameOver;
     event Action OnLevelWin;
     event Action OnTotalScoresChanged;
+    event Action OnPlayerLivesChanged;
 
     void AddScores(int value);
     void CheckIfAllFireRoomsExtinguished();

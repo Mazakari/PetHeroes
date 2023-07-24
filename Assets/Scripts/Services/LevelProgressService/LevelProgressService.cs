@@ -48,8 +48,10 @@ public class LevelProgressService : ILevelProgressService
     {
         CurrentPlayerLives--;
         CurrentPlayerLives = Mathf.Clamp(CurrentPlayerLives, 0, _maxPlayerLives);
-        OnPlayerLivesChanged?.Invoke();
-        if (CurrentPlayerLives <= 0 ) 
+
+        SendOnLivesChangedCallback();
+
+        if (CurrentPlayerLives <= 0)
         {
             Debug.Log("Game Over");
             ResetLives();
@@ -70,6 +72,13 @@ public class LevelProgressService : ILevelProgressService
         OnTotalScoresChanged?.Invoke();
     }
 
-    private void ResetLives() =>
-       CurrentPlayerLives = _maxPlayerLives;
+    private void ResetLives()
+    {
+        CurrentPlayerLives = _maxPlayerLives;
+        SendOnLivesChangedCallback();
+    }
+    private void SendOnLivesChangedCallback()
+    {
+        OnPlayerLivesChanged?.Invoke();
+    }
 }
