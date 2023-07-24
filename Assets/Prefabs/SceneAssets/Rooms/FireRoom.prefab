@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerLayer: 6
   _room: {fileID: 151576630272361646}
+  _drop: {fileID: 2009977742848637836}
 --- !u!114 &2009977742848637836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +180,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6defebad103a04b87a01f1ce52896a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dropTable: {fileID: 11400000, guid: 42fb92588322bf8428429b81765ff1b1, type: 2}

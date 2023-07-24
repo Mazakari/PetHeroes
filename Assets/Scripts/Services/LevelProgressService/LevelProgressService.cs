@@ -16,6 +16,7 @@ public class LevelProgressService : ILevelProgressService
     public event Action OnGameOver;
     public event Action OnLevelWin;
     public event Action OnTotalScoresChanged;
+    public event Action OnPlayerLivesChanged;
 
     public LevelProgressService()
     {
@@ -47,7 +48,7 @@ public class LevelProgressService : ILevelProgressService
     {
         CurrentPlayerLives--;
         CurrentPlayerLives = Mathf.Clamp(CurrentPlayerLives, 0, _maxPlayerLives);
-
+        OnPlayerLivesChanged?.Invoke();
         if (CurrentPlayerLives <= 0 ) 
         {
             Debug.Log("Game Over");

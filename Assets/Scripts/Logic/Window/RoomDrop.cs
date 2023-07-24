@@ -1,8 +1,10 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class RoomDrop : MonoBehaviour
 {
-    // TO DO Add items list with weights
+    [SerializeField] private DropTable_SO _dropTable;
+
     private IDropService _dropService;
     private Transform _dropSpawnPoint;
 
@@ -17,22 +19,38 @@ public class RoomDrop : MonoBehaviour
 
     public void DropItem()
     {
-        // TO DO Roll item weight and choose which to drop
+        DropType type = GetDrop();
 
-        int rnd = Random.Range(0, 100);
-        if (rnd < 70)
+        switch (type)
         {
-            return;
+            case DropType.Empty:
+                break;
+
+            case DropType.Money:
+                _dropService.ActivateMoneyDropable(_dropSpawnPoint);
+                break;
+
+            case DropType.Fire:
+                _dropService.ActivateFireDropable(_dropSpawnPoint);
+                break;
+
+            default:
+                Debug.LogError("DropType not found");
+                break;
         }
-        else if(rnd > 70 && rnd < 90)
+    }
+
+    private DropType GetDrop()
+    {
+        int roll = Random.Range(0, 100);
+        for (int i = 0; i < _dropTable.table.Count; i++)
         {
-            _dropService.ActivateMoneyDropable(_dropSpawnPoint);
-            return;
+            roll -= _dropTable.table[i].probability;
+            if (roll < 0)
+            {
+                return _dropTable.table[i].drop;
+            }
         }
-        else if(rnd > 90)
-        {
-            _dropService.ActivateFireDropable(_dropSpawnPoint);
-            return;
-        }
+        return _dropTable.table[0].drop;
     }
 }
