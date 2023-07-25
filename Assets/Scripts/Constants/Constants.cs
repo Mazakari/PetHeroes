@@ -17,11 +17,17 @@ public class Constants
 
     #region SCENE NAMES
     public const string MAIN_MENU_SCENE_NAME = "MainMenu";
+    public const string SHOP_SCENE_NAME = "Shop";
     public const string FIRST_LEVEL_NAME = "Level1";
     #endregion
 
-    #region SCENE ASSETS
+    #region SPAWN POINT TAGS
     public const string PLAYER_SPAWN_POINT_TAG = "PlayerSpawnPoint";
+    public const string SHOP_ITEM_VIEW_POINT_TAG = "ShopItemViewPoint";
+    #endregion
+
+    #region SHOP TAGS
+    public const string SKINS_TAB_TAG = "Skins Tab";
     #endregion
 
     #region PROGRESS DATA

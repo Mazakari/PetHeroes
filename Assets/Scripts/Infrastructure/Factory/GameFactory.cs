@@ -10,28 +10,37 @@ public class GameFactory : IGameFactory
 
     public GameFactory(IAssets assets) =>
         _assets = assets;
-
+    #region PLAYER
     public GameObject CreatePlayer(GameObject at) =>
         InstantiateRegistered(AssetPath.PLAYER_PREFAB_PATH, at.transform.position);
+    public GameObject SpawnPlayerSkin(GameObject prefab, Vector2 at) =>
+    InstantiateRegistered(prefab, at);
+    #endregion
 
+    #region SHOP
+    public GameObject CreateShopItem(Transform parent) =>
+     InstantiateRegistered(AssetPath.SHOP_ITEM_PREFAB_PATH, parent);
+    #endregion
+
+    #region HUDS
     public GameObject CreateLevelHud() =>
        InstantiateRegistered(AssetPath.LEVEL_CANVAS_PATH);
 
     public void CreateMainMenulHud() =>
        InstantiateRegistered(AssetPath.MAIN_MENU_CANVAS_PATH);
+    public void CreateShopHud() =>
+      InstantiateRegistered(AssetPath.SHOP_CANVAS_PATH);
 
     public GameObject CreateLevelCell() =>
       InstantiateRegistered(AssetPath.LEVEL_CELL_PREFAB_PATH);
+    #endregion
 
+    #region SYSTEM
     public void CreateVolumeControl() =>
         InstantiateRegistered(AssetPath.VOLUME_CONTROL_PREFAB_PATH);
+    #endregion
 
-    public void Cleanup()
-    {
-        ProgressReaders.Clear();
-        ProgressWriters.Clear();
-    }
-
+    #region INSTANTIATE
     private GameObject InstantiateRegistered(string prefabPath, Transform parent)
     {
         GameObject obj = _assets.Instantiate(prefabPath, parent);
@@ -56,6 +65,24 @@ public class GameFactory : IGameFactory
         return obj;
     }
 
+    private GameObject InstantiateRegistered(GameObject prefab, Vector2 at)
+    {
+        GameObject obj = _assets.Instantiate(prefab, at);
+        RegisterProgressWatchers(obj);
+
+        return obj;
+    }
+    #endregion
+
+    #region INTERNAL SERVICE
+    public void Cleanup()
+    {
+        ProgressReaders.Clear();
+        ProgressWriters.Clear();
+    }
+    #endregion
+
+    #region REGISTRATION
     private void Register(ISavedProgressReader progressReader)
     {
         if (progressReader is ISavedProgress progressWriter)
@@ -73,4 +100,5 @@ public class GameFactory : IGameFactory
             Register(progressReader);
         }
     }
+    #endregion
 }

@@ -61,14 +61,35 @@ public class LoadLevelState : IPayloadedState<string>
 
     private void InitGameWorld()
     {
+        GameObject currentSkinPrefab = _progressService.Progress.gameData.currentSkinPrefab;
         GameObject spawnPos = GameObject.FindGameObjectWithTag(Constants.PLAYER_SPAWN_POINT_TAG);
-        GameObject player = _gameFactory.CreatePlayer(spawnPos);
+        GameObject player = SpawnPlayer(currentSkinPrefab, spawnPos);
+
         PlatformInput platform = Object.FindObjectOfType<PlatformInput>();
         _gameFactory.CreateLevelHud();
 
         SetPlatformReferrence(platform, player);
         SetSpawnPointReferrence(spawnPos, player);
     }
+
+    private GameObject SpawnPlayer(GameObject currentSkinPrefab, GameObject spawnPos) =>
+       LoadDefaultPlayerOrWithSkin(currentSkinPrefab, spawnPos);
+
+    private GameObject LoadDefaultPlayerOrWithSkin(GameObject currentSkinPrefab, GameObject spawnPos)
+    {
+        GameObject player;
+        if (currentSkinPrefab != null)
+        {
+            player = _gameFactory.SpawnPlayerSkin(currentSkinPrefab, spawnPos.transform.position);
+        }
+        else
+        {
+            player = _gameFactory.CreatePlayer(spawnPos);
+        }
+
+        return player;
+    }
+
     private void SetPlatformReferrence(PlatformInput platform, GameObject player)
     {
         if (platform != null)
@@ -90,7 +111,6 @@ public class LoadLevelState : IPayloadedState<string>
     private void ResetTotalLevelScores() =>
        _levelProgressService.ResetScores();
    
-
     private void InformProgressReaders()
     {
         foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)

@@ -1,23 +1,28 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenuCanvas : MonoBehaviour, ISavedProgress
 {
     [Header("Level Selection Popup")]
-    [Space(10)]
     [SerializeField] private GameObject _levelSelectionPopup;
     [SerializeField] private Transform _levelSelectionContent;
 
-    [Header("Settings Popup")]
     [Space(10)]
+    [Header("Shop Settings")]
+    [SerializeField] private Button _shopButton;
+    public static event Action OnShopButtonPress;
+
+    [Space(10)]
+    [Header("Settings Popup")]
     [SerializeField] private GameObject _settingsPopup;
 
-    [Header("Developers Popup")]
     [Space(10)]
+    [Header("Developers Popup")]
     [SerializeField] private GameObject _developersPopup;
 
-    [Header("Yandex Progress Reset")]
     [Space(10)]
+    [Header("Yandex Progress Reset")]
     [SerializeField] private Button _yandexProgressResetButton;
 
     private ILevelCellsService _levelCellsService;
@@ -42,6 +47,8 @@ public class MainMenuCanvas : MonoBehaviour, ISavedProgress
         MainMenuState.OnAuthorizationPlayerProgressSynced -= OverwriteLevelCellsData;
     }
 
+    
+
     public void ShowSelectLevelsPopup()
     {
         Debug.Log("ShowSelectLevelsPopup");
@@ -50,6 +57,8 @@ public class MainMenuCanvas : MonoBehaviour, ISavedProgress
 
     public void HideSelectLevelsPopup() => 
         _levelSelectionPopup.SetActive(false);
+    public void LoadShop() =>
+      OnShopButtonPress?.Invoke();
 
     public void ShowSettingsPopup() =>
         _settingsPopup.SetActive(true);

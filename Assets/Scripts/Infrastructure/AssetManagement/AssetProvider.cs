@@ -19,4 +19,7 @@ public class AssetProvider : IAssets
         GameObject prefab = Resources.Load<GameObject>(path);
         return Object.Instantiate(prefab, parent);
     }
+
+    public GameObject Instantiate(GameObject prefab, Vector2 at) =>
+        Object.Instantiate(prefab, at, Quaternion.identity);
 }

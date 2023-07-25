@@ -7,15 +7,22 @@ public class MainMenuState : IState
     private readonly IPersistentProgressService _progressService;
     private readonly ISaveLoadService _saveLoadService;
     private readonly IYandexService _yandexService;
+    private readonly ISkinsService _skinService;
 
     public static event Action<PlayerProgress> OnAuthorizationPlayerProgressSynced;
 
-    public MainMenuState(GameStateMachine gameStateMachine, IPersistentProgressService progressService, ISaveLoadService saveLoadService, IYandexService yandexService)
+    public MainMenuState(
+        GameStateMachine gameStateMachine, 
+        IPersistentProgressService progressService, 
+        ISaveLoadService saveLoadService, 
+        IYandexService yandexService, 
+        ISkinsService skinService)
     {
         _gameStateMachine = gameStateMachine;
         _progressService = progressService;
         _saveLoadService = saveLoadService;
         _yandexService = yandexService;
+        _skinService = skinService;
     }
 
     public void Enter()
@@ -23,6 +30,7 @@ public class MainMenuState : IState
         Debug.Log("MainMenuState");
         LevelCell.OnLevelCellPress += StartGame;
         ContinueGame.OnContinueGamePress += StartGame;
+        MainMenuCanvas.OnShopButtonPress += LoadShop;
 
 #if UNITY_WEBGL
         _yandexService.API.OnYandexProgressCopied += LoadProgressFromCloud;
@@ -33,6 +41,7 @@ public class MainMenuState : IState
     {
         LevelCell.OnLevelCellPress -= StartGame;
         ContinueGame.OnContinueGamePress -= StartGame;
+        MainMenuCanvas.OnShopButtonPress -= LoadShop;
 
 #if UNITY_WEBGL
         _yandexService.API.OnYandexProgressCopied -= LoadProgressFromCloud;
@@ -75,7 +84,12 @@ public class MainMenuState : IState
     private PlayerProgress NewProgress()
     {
         Debug.Log("Cloud Progress is null. Create new progress");
-        return new(initialLevel: Constants.NEW_PROGRESS_FIRST_LEVEL_SCENE_NAME);
+        return new(
+            initialMoney: Constants.NEW_PROGRESS_PLAYER_MONEY_AMOUNT,
+            initialLevel: Constants.NEW_PROGRESS_FIRST_LEVEL_SCENE_NAME,
+            _skinService.DefaultSkinPrefab);
     }
 
+    private void LoadShop() =>
+       _gameStateMachine.Enter<LoadShopState, string>(Constants.SHOP_SCENE_NAME);
 }

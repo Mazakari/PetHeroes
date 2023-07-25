@@ -12,10 +12,12 @@ public class GameStateMachine
         {
             [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, yandexAPI, services),
             [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, services.Single<IGameFactory>(), services.Single<IPersistentProgressService>(), services.Single<ILevelCellsService>(), services.Single<ILevelProgressService>(), services.Single<IDropService>()),
-            [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>(), services.Single<IYandexService>()),
+            [typeof(LoadShopState)] = new LoadShopState(this, sceneLoader, curtain, services.Single<IGameFactory>(), services.Single<IShopService>(), services.Single<IPersistentProgressService>()),
+            [typeof(ShopState)] = new ShopState(this),
+            [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>(), services.Single<IYandexService>(), services.Single<ISkinsService>()),
             [typeof(LoadMainMenuState)] = new LoadMainMenuState(this, sceneLoader, curtain, services.Single<IGameFactory>(), services.Single<IPersistentProgressService>(), services.Single<ILevelCellsService>(), services.Single<IYandexService>()),
             [typeof(GameLoopState)] = new GameLoopState(this, sceneLoader, services.Single<ILevelProgressService>()),
-            [typeof(MainMenuState)] = new MainMenuState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>(), services.Single<IYandexService>()),
+            [typeof(MainMenuState)] = new MainMenuState(this, services.Single<IPersistentProgressService>(), services.Single<ISaveLoadService>(), services.Single<IYandexService>(), services.Single<ISkinsService>()),
         };
 
     }

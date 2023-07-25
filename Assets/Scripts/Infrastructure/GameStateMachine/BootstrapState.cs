@@ -46,6 +46,9 @@ public class BootstrapState : IState
         _services.RegisterSingle<ILanguageService>(new LanguageService(_services.Single<IYandexService>()));
         _services.RegisterSingle<ILevelProgressService>(new LevelProgressService());
         _services.RegisterSingle<IDropService>(new DropService());
+        _services.RegisterSingle<IMetaResourcesService>(new MetaResources());
+        _services.RegisterSingle<IShopService>(new ShopService());
+        _services.RegisterSingle<ISkinsService>(new SkinsService());
     }
 
     // System Settings

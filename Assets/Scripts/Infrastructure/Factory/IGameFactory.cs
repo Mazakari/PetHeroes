@@ -13,4 +13,7 @@ public interface IGameFactory : IService
     GameObject CreateLevelCell();
     void CreateVolumeControl();
     void Cleanup();
+    GameObject CreateShopItem(Transform parent);
+    void CreateShopHud();
+    GameObject SpawnPlayerSkin(GameObject prefab, Vector2 at);
 }

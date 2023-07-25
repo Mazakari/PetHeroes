@@ -1,12 +1,13 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class PlayerProgress
 {
     public GameMetaData gameData;
 
-    public PlayerProgress(string initialLevel)
+    public PlayerProgress(int initialMoney, string initialLevel, GameObject defaultPlayerSkinPrefab)
     {
-        gameData = new GameMetaData(initialLevel);
+        gameData = new GameMetaData(initialMoney, initialLevel, defaultPlayerSkinPrefab);
     }
 }

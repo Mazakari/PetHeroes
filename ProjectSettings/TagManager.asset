@@ -10,6 +10,7 @@ TagManager:
   - Loose
   - Platform
   - Window
+  - ShopItemViewPoint
   layers:
   - Default
   - TransparentFX
