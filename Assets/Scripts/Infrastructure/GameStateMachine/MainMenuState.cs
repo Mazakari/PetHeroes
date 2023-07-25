@@ -22,6 +22,7 @@ public class MainMenuState : IState
     {
         Debug.Log("MainMenuState");
         LevelCell.OnLevelCellPress += StartGame;
+        ContinueGame.OnContinueGamePress += StartGame;
 
 #if UNITY_WEBGL
         _yandexService.API.OnYandexProgressCopied += LoadProgressFromCloud;
@@ -31,6 +32,7 @@ public class MainMenuState : IState
     public void Exit()
     {
         LevelCell.OnLevelCellPress -= StartGame;
+        ContinueGame.OnContinueGamePress -= StartGame;
 
 #if UNITY_WEBGL
         _yandexService.API.OnYandexProgressCopied -= LoadProgressFromCloud;
