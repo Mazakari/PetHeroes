@@ -18,10 +18,8 @@ public class PlayerMoney : MonoBehaviour, ISavedProgress
         UpdateCounter(_money);
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() => 
         ShopItem.OnShopItemBuy -= UpdateCounter;
-    }
 
     public void UpdateCounter(int newMoneyValue) => 
         _moneyCounter.text = newMoneyValue.ToString();

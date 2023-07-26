@@ -10,6 +10,7 @@ public interface ILevelProgressService : IService
     event Action OnTotalScoresChanged;
     event Action OnPlayerLivesChanged;
 
+    void AddBonusScores(int bonusScoresAmount);
     void AddScores(int value);
     void CheckIfAllFireRoomsExtinguished();
     void DecreasePlayerLives();

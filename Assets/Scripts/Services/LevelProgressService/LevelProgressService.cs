@@ -66,6 +66,12 @@ public class LevelProgressService : ILevelProgressService
         OnTotalScoresChanged?.Invoke();
     }
 
+    public void AddBonusScores(int bonusScoresAmount)
+    {
+        _playerScores = 0;
+        _playerScores = bonusScoresAmount;
+    }
+
     public void ResetScores()
     {
         _playerScores = 0;

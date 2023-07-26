@@ -10,6 +10,7 @@ public class GameFactory : IGameFactory
 
     public GameFactory(IAssets assets) =>
         _assets = assets;
+
     #region PLAYER
     public GameObject CreatePlayer(GameObject at) =>
         InstantiateRegistered(AssetPath.PLAYER_PREFAB_PATH, at.transform.position);

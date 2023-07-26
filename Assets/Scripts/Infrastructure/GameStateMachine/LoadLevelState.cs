@@ -63,6 +63,7 @@ public class LoadLevelState : IPayloadedState<string>
     {
         GameObject currentSkinPrefab = _progressService.Progress.gameData.currentSkinPrefab;
         GameObject spawnPos = GameObject.FindGameObjectWithTag(Constants.PLAYER_SPAWN_POINT_TAG);
+
         GameObject player = SpawnPlayer(currentSkinPrefab, spawnPos);
 
         PlatformInput platform = Object.FindObjectOfType<PlatformInput>();

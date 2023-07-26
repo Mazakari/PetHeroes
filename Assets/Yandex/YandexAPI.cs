@@ -34,6 +34,10 @@ public class YandexAPI : MonoBehaviour
     private static extern void ShowFullscrenAds();
 
     [DllImport("__Internal")]
+    private static extern void ShowRewardedAds();
+    public event Action OnRewardedVideoWatched;
+
+    [DllImport("__Internal")]
     private static extern bool PlayerAuthorized();
     public event Action OnAuthorizedStatusResponse;
 
@@ -113,6 +117,22 @@ public class YandexAPI : MonoBehaviour
     public void ShowYandexInterstitial() =>
         ShowFullscrenAds();
 
+    public void ShowYandexRewarded()
+    {
+#if !UNITY_EDITOR
+        Debug.Log("YandexAPI. Show Yandex Rewarded Ads");
+        ShowRewardedAds();
+#elif UNITY_EDITOR
+        RewardedAdsWatched();
+#endif
+    }
+
+    public void RewardedAdsWatched()
+    {
+        Debug.Log("Scores value now x2");
+        OnRewardedVideoWatched?.Invoke();
+    }
+
     public void PauseGame() =>
         _timeService.PauseGame();
 
@@ -127,4 +147,6 @@ public class YandexAPI : MonoBehaviour
             LoadFromYandex();
         }
     }
+
+    
 }
