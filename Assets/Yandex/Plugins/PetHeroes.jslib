@@ -44,8 +44,8 @@ mergeInto(LibraryManager.library, {
 		ysdk.getLeaderboards()
 		.then(lb => {
 			// Без extraData
-			lb.setLeaderboardScore('MaxClearedLevel', value);
-			console.log('Max level saved');
+			lb.setLeaderboardScore('TopLevelScores', value);
+			console.log('Total scores saved');
 			console.log(value);
 		});
 	},

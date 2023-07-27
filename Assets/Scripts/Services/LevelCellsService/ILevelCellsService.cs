@@ -6,7 +6,6 @@
     string CurrentLevelName { get; }
 
     void InitService();
-    void SaveCompletedLevel(bool artifactLocked);
     void SetCurrentCell();
     void UnlockNextLevel(string nextLevelName);
 }

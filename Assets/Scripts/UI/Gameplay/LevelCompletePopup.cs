@@ -36,10 +36,8 @@ public class LevelCompletePopup : MonoBehaviour
         _itemSound.Play();
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() => 
         _yandexService.API.OnRewardedVideoWatched -= AddRewardedBonus;
-    }
 
     public void RestartLevel() =>
        GameplayCanvas.OnRestartLevel?.Invoke();

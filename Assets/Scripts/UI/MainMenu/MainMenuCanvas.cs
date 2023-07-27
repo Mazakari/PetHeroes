@@ -114,9 +114,6 @@ public class MainMenuCanvas : MonoBehaviour, ISavedProgress
         string name;
         bool locked;
 
-        Sprite sprite;
-        bool artifactLocked;
-
         if (progress.gameData.levels.Count > 0)
         {
             for (int i = 0; i < progress.gameData.levels.Count; i++)
@@ -125,11 +122,7 @@ public class MainMenuCanvas : MonoBehaviour, ISavedProgress
                 name = progress.gameData.levels[i].sceneName;
                 locked = progress.gameData.levels[i].locked;
 
-                sprite = progress.gameData.levels[i].artifactSprite;
-                artifactLocked = progress.gameData.levels[i].artifactLocked;
-
-
-                _levelCellsService.Levels[i].InitLevelCell(number, name, locked, sprite, artifactLocked);
+                _levelCellsService.Levels[i].InitLevelCell(number, name, locked);
             }
         }
     }

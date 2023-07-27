@@ -15,9 +15,6 @@ public struct LevelCellsData
     public int number;
     public string sceneName;
     public bool locked;
-
-    public Sprite artifactSprite;
-    public bool artifactLocked;
 }
 
 [Serializable]

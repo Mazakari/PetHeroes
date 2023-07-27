@@ -13,7 +13,7 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
     [SerializeField] private CurrentLevelDisplay _levelDisplay;
 
     private ILevelCellsService _levelCellsService;
-    private IYandexService _yandexService;
+    
     private ILevelProgressService _levelProgressService;
     private ITimeService _timeService;
 
@@ -28,7 +28,6 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
     private void OnEnable()
     {
         _levelCellsService = AllServices.Container.Single<ILevelCellsService>();
-        _yandexService = AllServices.Container.Single<IYandexService>();
         _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
         _timeService = AllServices.Container.Single<ITimeService>();
 
@@ -55,18 +54,13 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
     private void ShowLevelCompletePopup()
     {
         _timeService.PauseGame();
-        //SetArtifactImage();
 
-        //_levelCellsService.SaveCompletedLevel(artifactLocked);
         _levelCellsService.UnlockNextLevel(_nextLevelName);
 
         _LevelCompletePopup.gameObject.SetActive(true);
 
         ShowYandexRateGamePopup();
     }
-
-    private void SetArtifactImage() => 
-        _levelArtifactImage.sprite = _levelCellsService.Current.ArtifactSprite;
 
     // Send callback for GameLoopState
     public void LoadMainMenu() => 
@@ -83,10 +77,7 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
 
     public void UpdateProgress(PlayerProgress progress)
     {
-#if !UNITY_EDITOR
-        // Save yandex leaderboard
-        _yandexService.API.SaveYandexLeaderboard(_currentLevelNumber);
-#endif
+
         progress.gameData.nextLevel = _nextLevelName;
         CopyProgress(_levelCellsService.LevelsData, progress.gameData.levels);
     }
@@ -114,9 +105,6 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
             data.locked = source[i].locked;
             data.sceneName = source[i].sceneName;
 
-            data.artifactSprite = source[i].artifactSprite;
-            data.artifactLocked = source[i].artifactLocked;
-
             targetLevelsData.Add(data);
         }
     }
@@ -134,11 +122,6 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
         {
             if (targetLevelsData[i].sceneName.Equals(completedLevelName))
             {
-                if (targetLevelsData[i].artifactLocked == false)
-                {
-                    currentData.artifactLocked = false;
-                }
-
                 targetLevelsData[i] = currentData;
             }
         }

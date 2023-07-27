@@ -39,12 +39,6 @@ public partial class LevelCellsService : ILevelCellsService
         CopyLevelsData();
     }
 
-    public void SaveCompletedLevel(bool artifactLocked)
-    {
-        Current.SaveCompletedLevel(artifactLocked);
-        SaveCompletedLevelData(CurrentLevelName, artifactLocked);
-    }
-
     public void SetCurrentCell()
     {
         CurrentLevelName = _sceneLoader.GetCurrentLevelName();
@@ -80,19 +74,13 @@ public partial class LevelCellsService : ILevelCellsService
         int number;
         bool levelLocked;
 
-        Sprite artifactSprite;
-        bool artifactLocked;
-
         for (int i = 0; i < _levelsDataSO.LevelsData.Length; i++)
         {
             name = _levelsDataSO.LevelsData[i].LevelSceneName;
             number = i + 1;
             levelLocked = _levelsDataSO.LevelsData[i].LevelLocked;
 
-            artifactSprite = _levelsDataSO.LevelsData[i].LevelArtifactSprite;
-            artifactLocked = _levelsDataSO.LevelsData[i].ArtifactLocked;
-
-            _levels[i].InitLevelCell(number, name, levelLocked, artifactSprite, artifactLocked);
+            _levels[i].InitLevelCell(number, name, levelLocked);
         }
     }
 
@@ -111,23 +99,9 @@ public partial class LevelCellsService : ILevelCellsService
             _levelsData[i].number = _levels[i].LevelNumber;
             _levelsData[i].sceneName = _levels[i].LevelSceneName;
             _levelsData[i].locked = _levels[i].LevelLocked;
-
-            _levelsData[i].artifactSprite = _levels[i].ArtifactSprite;
-            _levelsData[i].artifactLocked = _levels[i].ArtifactLocked;
         }
     }
    
-    private void SaveCompletedLevelData(string completedLevelName, bool artifactLocked)
-    {
-        int levelDataIndex = GetLevelDataIndex(completedLevelName);
-
-        if (levelDataIndex >= -1)
-        {
-            _levelsData[levelDataIndex].locked = false;
-            _levelsData[levelDataIndex].artifactLocked = artifactLocked;
-        }
-       
-    }
     private void UnlockNextLevelData(string nextLevelName)
     {
         int nextLevelIndex = GetLevelDataIndex(nextLevelName);
