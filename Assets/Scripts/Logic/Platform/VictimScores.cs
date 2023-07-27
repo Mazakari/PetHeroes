@@ -4,6 +4,7 @@ public class VictimScores : MonoBehaviour
 {
     [SerializeField] private int _playerLayer;
     [SerializeField] private ShowVictimScore[] _victimScores;
+    [SerializeField] private ItemSound _itemSound;
 
     private int _totalScores = 0;
     private  int _score;
@@ -26,9 +27,13 @@ public class VictimScores : MonoBehaviour
                 GetAndShowBasketsScores(basketsControl);
                 UpdateTotalScoresInUi();
                 DeactivateBaskets(basketsControl);
+                Playsound();
             }
         }
     }
+
+    
+
     private void GetAndShowBasketsScores(VictimBasketsControl basketsControl)
     {
         _totalScores = 0;
@@ -62,6 +67,11 @@ public class VictimScores : MonoBehaviour
     private void UpdateTotalScoresInUi() =>
        _progressService.AddScores(_totalScores);
 
-    private static void DeactivateBaskets(VictimBasketsControl basketsControl) => 
+    private void DeactivateBaskets(VictimBasketsControl basketsControl) => 
         basketsControl.DeactivateBaskets();
+
+    private void Playsound()
+    {
+        _itemSound.Play();
+    }
 }
