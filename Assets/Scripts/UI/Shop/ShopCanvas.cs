@@ -18,25 +18,21 @@ public class ShopCanvas : MonoBehaviour
     private void OnEnable()
     {
         _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
-
         _shopTabs = GetComponentsInChildren<ShopTab>();
 
         _skins.TabButton.onClick.AddListener(delegate { SwitchActiveTab(_skins); });
-
         _mainMenuButton.onClick.AddListener(LoadMainMenu);
     }
 
     private void OnDisable()
     {
         _skins.TabButton.onClick.RemoveAllListeners();
-
         _mainMenuButton.onClick.RemoveAllListeners();
     }
 
     private void LoadMainMenu()
     {
         _saveLoadService.SaveProgress();
-
         OnMainMenuButton?.Invoke();
     }
 

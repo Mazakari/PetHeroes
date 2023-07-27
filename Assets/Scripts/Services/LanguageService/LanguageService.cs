@@ -2,17 +2,19 @@
 
 public class LanguageService : ILanguageService
 {
-    public CurrentLanguage Language { get; private set; }
-
-    private string _language;
-
-    private readonly IYandexService _yandexService;
     public enum CurrentLanguage
     {
         Ru,
         En,
         Tr
     }
+
+    public CurrentLanguage Language { get; private set; }
+
+    private string _language;
+
+    private readonly IYandexService _yandexService;
+   
 
     public LanguageService(IYandexService yandexService)
     {
