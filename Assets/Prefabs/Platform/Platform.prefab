@@ -274,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionChangeDeadZone: 0.1
   _forceDecreaseMultiplier: 4
+  _sound: {fileID: 4698651454055748408}
 --- !u!114 &4698651454055748408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4073783453917660035, guid: 8b039cb3ce8eb8e4a84bef6741ee4532, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c3678f4fc0c7e4b419aa190dc874d04b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1

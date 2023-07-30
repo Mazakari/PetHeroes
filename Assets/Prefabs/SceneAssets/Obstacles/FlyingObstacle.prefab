@@ -178,8 +178,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7618406360298040833}
   - component: {fileID: 1814221028637730107}
-  - component: {fileID: 8890675790756965315}
-  - component: {fileID: 678096764846974850}
+  - component: {fileID: 3234614849811993954}
+  - component: {fileID: 7694307819867234265}
+  - component: {fileID: 5410409901926661311}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -238,7 +239,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.40749648, y: -0.3092584}
   m_Size: {x: 1.4366195, y: 0.759892}
   m_Direction: 1
---- !u!82 &8890675790756965315
+--- !u!114 &3234614849811993954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618406360298040846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a712630266f341f4c8b950c5c238c3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 7694307819867234265}
+  _pitchSound: 0
+--- !u!82 &7694307819867234265
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,9 +263,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4073783453917660035, guid: 8b039cb3ce8eb8e4a84bef6741ee4532, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b3913feacb86a084086cc9f12bf97594, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6315e57e20ba37244a583b53fa16d8a7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -334,7 +349,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &678096764846974850
+--- !u!114 &5410409901926661311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,11 +358,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7618406360298040846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a712630266f341f4c8b950c5c238c3c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 48300f066069d4b4bb77fb75f93f90c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 8890675790756965315}
-  _pitchSound: 0
+  _directionChangeDeadZone: 0.1
+  _forceDecreaseMultiplier: 3
+  _sound: {fileID: 3234614849811993954}
 --- !u!1 &7618406360346413288
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +374,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7618406360346413290}
   - component: {fileID: 4420934074442274410}
-  - component: {fileID: 1927169739839519385}
   m_Layer: 0
   m_Name: FlyingObstacle
   m_TagString: Untagged
@@ -425,17 +440,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1927169739839519385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7618406360346413288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48300f066069d4b4bb77fb75f93f90c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _directionChangeDeadZone: 0.1
-  _forceDecreaseMultiplier: 3

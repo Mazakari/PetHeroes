@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1253946416042967217}
   - component: {fileID: 5327475711541545869}
   m_Layer: 8
-  m_Name: Monery_Dropable
+  m_Name: Money_Dropable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4073783453917660035, guid: 8b039cb3ce8eb8e4a84bef6741ee4532, type: 2}
-  m_audioClip: {fileID: 8300000, guid: ac5092f47a2233d41afd0cbfbc5f3e4a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 74851f44e46de3748b949da0278d7264, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -323,4 +323,6 @@ MonoBehaviour:
   _platform: 7
   _deathTrigger: 9
   _platformRigidbody: {fileID: 3252285140347735822}
+  _spriteRenderer: {fileID: 9044019023226893124}
+  _collider: {fileID: 4429720841897758912}
   _itemSound: {fileID: 1253946416042967217}

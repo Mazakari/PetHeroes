@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlatformCollision : MonoBehaviour
@@ -5,6 +6,8 @@ public class PlatformCollision : MonoBehaviour
     [SerializeField] private int _platform;
     [SerializeField] private int _deathTrigger;
     [SerializeField] private Rigidbody2D _platformRigidbody;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Collider2D _collider;
 
     private IDropableItem _dropable;
     private IDropService _dropService;
@@ -33,13 +36,16 @@ public class PlatformCollision : MonoBehaviour
         _platformRigidbody.isKinematic = true;
         _platformRigidbody.velocity = Vector3.zero;
         _platformRigidbody.gameObject.transform.position = Vector3.zero;
+        _spriteRenderer.enabled = true;
+        _platformRigidbody.isKinematic = false;
+        _collider.enabled = true;
     }
 
     private void CollideWithObject(Collider2D collider)
     {
         if (collider.gameObject.layer == _platform)
         {
-            UseDroppableAndPoolIt();
+            StartCoroutine(UseDroppableAndPoolIt());
             return;
         }
         if (collider.gameObject.layer == _deathTrigger)
@@ -48,18 +54,15 @@ public class PlatformCollision : MonoBehaviour
             return;
         }
     }
-    private void UseDroppableAndPoolIt()
+    private IEnumerator UseDroppableAndPoolIt()
     {
         PlayItemSound();
         ActivateDroppableEffect();
+        DeactivateDropabable();
+        yield return new WaitForSeconds(1f);
         PoolDropable();
+
     }
-    private void PoolDropable() => 
-        _dropService.PoolDroppable(transform.parent.gameObject);
-
-    private void ActivateDroppableEffect() => 
-        _dropable.Use();
-
     private void PlayItemSound()
     {
         if (_itemSound)
@@ -67,4 +70,16 @@ public class PlatformCollision : MonoBehaviour
             _itemSound.Play();
         }
     }
+
+    private void ActivateDroppableEffect() => 
+        _dropable.Use();
+   
+    private void DeactivateDropabable()
+    {
+        _spriteRenderer.enabled = false;
+        _platformRigidbody.isKinematic = true;
+        _collider.enabled = false;
+    }
+    private void PoolDropable() =>
+       _dropService.PoolDroppable(transform.parent.gameObject);
 }

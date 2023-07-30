@@ -4,6 +4,7 @@ public class PlayerBounce : MonoBehaviour
 {
     [SerializeField] private float _directionChangeDeadZone = 0.1f;
     [SerializeField] private int _forceDecreaseMultiplier = 3;
+    [SerializeField] private ItemSound _sound;
 
     private void OnCollisionEnter2D(Collision2D collision) => 
         BouncePlayerOff(collision);
@@ -36,10 +37,17 @@ public class PlayerBounce : MonoBehaviour
 
             Vector2 newDirection = new(direction * Mathf.Abs(difference * (player.Force / _forceDecreaseMultiplier)), player.Force);
             player.AddPlayerLaunchForce(newDirection);
+            PlayCollisionSound();
+            Debug.Log($"Collision {gameObject.name}");
         }
     }
     private bool BallOutsideDeathZone(float difference) =>
         Mathf.Abs(difference) > _directionChangeDeadZone;
     private static float RoundXPosValue(float value) =>
         Mathf.Round(value * 100f) / 100f;
+
+    private void PlayCollisionSound()
+    {
+        _sound.Play();
+    }
 }

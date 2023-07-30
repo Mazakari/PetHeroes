@@ -136,6 +136,8 @@ MonoBehaviour:
   _platform: 7
   _deathTrigger: 9
   _platformRigidbody: {fileID: 3028529666449698854}
+  _spriteRenderer: {fileID: 289466999506612373}
+  _collider: {fileID: 5132382005596373958}
   _itemSound: {fileID: 4727518126432509617}
 --- !u!1 &8460561019669552954
 GameObject:
@@ -210,7 +212,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4073783453917660035, guid: 8b039cb3ce8eb8e4a84bef6741ee4532, type: 2}
-  m_audioClip: {fileID: 8300000, guid: ac5092f47a2233d41afd0cbfbc5f3e4a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 235d8e3e2a3da6b47a4525f22b3a50eb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
