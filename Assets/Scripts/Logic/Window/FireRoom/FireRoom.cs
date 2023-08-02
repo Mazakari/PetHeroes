@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FireRoom : MonoBehaviour
@@ -15,20 +14,14 @@ public class FireRoom : MonoBehaviour
 
     private ILevelProgressService _levelProgressService;
 
-    private void OnEnable()
-    {
+    private void OnEnable() => 
         _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
-    }
 
-    private void Start()
-    {
+    private void Start() => 
         InitFireRoom();
-    }
 
-    private void Update()
-    {
+    private void Update() => 
         FireTimer();
-    }
 
     public void DecreaseCurrentFireIndex()
     {
@@ -41,24 +34,16 @@ public class FireRoom : MonoBehaviour
         else
         {
             ExtiguishFire();
+            // TO DO Add sound on fire extinguished
         }
+
         ActivateCurrentFire();
 
+        // TO DO Play fire growth sound
+        PlayFireGrowthSound();
     }
 
-    private void FireTimer()
-    {
-        if(InFire == true)
-        {
-            _currentFireTimer += Time.deltaTime;
-            if (_currentFireTimer >= _maxFireTimer)
-            {
-                ResetFireTimer();
-                FireStatus();
-
-            }
-        }
-    }
+    
 
     private void InitFireRoom()
     {
@@ -80,28 +65,43 @@ public class FireRoom : MonoBehaviour
         _currentFireIndex = indexRnd;
         Debug.Log(indexRnd);
     }
-    private void FireStatus()
+    private void ActivateCurrentFire() =>
+       _spriteRenderer.sprite = _fireSprites[_currentFireIndex];
+    private void PlayFireGrowthSound()
     {
-        _currentFireIndex++;
-        _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _fireSprites.Length - 1);
-        ActivateCurrentFire();
-    }
-    private void ActivateCurrentFire()
-    {
-        _spriteRenderer.sprite = _fireSprites[_currentFireIndex];
-
+        if (_currentFireIndex > 0)
+        {
+            // TO DO Play fire growth sound
+        }
     }
 
-    private void ResetFireTimer()
+    private void FireTimer()
     {
-        _currentFireTimer = 0;
+        if(InFire == true)
+        {
+            _currentFireTimer += Time.deltaTime;
+            if (_currentFireTimer >= _maxFireTimer)
+            {
+                ResetFireTimer();
+                FireStatus();
+
+            }
+        }
     }
+    private void ResetFireTimer() =>
+       _currentFireTimer = 0;
+
     private void ExtiguishFire()
     {
         InFire = false;
         _roomCollider.enabled = false;
         _levelProgressService.CheckIfAllFireRoomsExtinguished();
     }
-
-
+   
+    private void FireStatus()
+    {
+        _currentFireIndex++;
+        _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _fireSprites.Length - 1);
+        ActivateCurrentFire();
+    }
 }

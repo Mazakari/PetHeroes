@@ -27,12 +27,11 @@ public class VictimScores : MonoBehaviour
                 GetAndShowBasketsScores(basketsControl);
                 UpdateTotalScoresInUi();
                 DeactivateBaskets(basketsControl);
+                // TO DO Find save victim sound
                 Playsound();
             }
         }
     }
-
-    
 
     private void GetAndShowBasketsScores(VictimBasketsControl basketsControl)
     {
@@ -70,8 +69,6 @@ public class VictimScores : MonoBehaviour
     private void DeactivateBaskets(VictimBasketsControl basketsControl) => 
         basketsControl.DeactivateBaskets();
 
-    private void Playsound()
-    {
+    private void Playsound() =>
         _itemSound.Play();
-    }
 }
