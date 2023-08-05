@@ -278,7 +278,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1116274925213458970}
   _playerState: {fileID: 1146643033853283390}
   _playerJumpUpSprite: {fileID: 21300000, guid: a3f28c9f26dcceb4fa73827699ce06f6, type: 3}
-  _playerFallDownSprite: {fileID: 21300000, guid: 9ff3171d551b72a40b8cf79fe82c8ba8, type: 3}
+  _playerFallDownSprite: {fileID: 21300000, guid: de9773d431447e3439805a7bbe9f65e2, type: 3}
   _playerHangingSprite: {fileID: 0}
   _playerWinSprite: {fileID: 0}
 --- !u!114 &7290008754008930345
