@@ -16,7 +16,7 @@ public class PlayerState : MonoBehaviour
     private State _current;
     private State _previous;
 
-    public static event Action<State> OnStateChange;
+    public event Action<State> OnStateChange;
 
     void Start() => 
         InitState();
@@ -26,15 +26,14 @@ public class PlayerState : MonoBehaviour
 
     private void UpdateState()
     {
-        float curAbsSpeedY = Mathf.Abs(_rb.velocity.y);
-
-        if (curAbsSpeedY >= 0.01f)
+        float yVelocityNormalized = _rb.velocity.normalized.y;
+        if (yVelocityNormalized >= 0)
         {
             _previous = _current;
             _current = State.JumpingUp;
         }
 
-        if (curAbsSpeedY <= 0.01f)
+        if (yVelocityNormalized < 0)
         {
             _previous = _current;
             _current = State.FallingDown;

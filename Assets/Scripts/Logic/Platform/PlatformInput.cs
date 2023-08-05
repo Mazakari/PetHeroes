@@ -23,8 +23,6 @@ public class PlatformInput : MonoBehaviour
         _inputServie.InputActions.Platform.Move.canceled -= SetMove;
     }
 
-    private void SetMove(InputAction.CallbackContext context)
-    {
+    private void SetMove(InputAction.CallbackContext context) => 
         MoveInputX = context.ReadValue<Vector2>().x;
-    }
 }

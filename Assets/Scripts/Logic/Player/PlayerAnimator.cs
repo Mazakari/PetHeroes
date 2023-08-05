@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private PlayerState _playerState;
+    public PlayerState PlayerState => _playerState;
 
     [SerializeField] private Sprite _playerJumpUpSprite;
     [SerializeField] private Sprite _playerFallDownSprite;

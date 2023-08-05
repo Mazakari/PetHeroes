@@ -4,11 +4,11 @@ public class PlayerAnimationsHandler : MonoBehaviour
 {
     [SerializeField] private PlayerAnimator _playerAnimator;
 
-    private void OnEnable() => 
-        PlayerState.OnStateChange += PlayStateAnimation;
+    private void OnEnable() =>
+        _playerAnimator.PlayerState.OnStateChange += PlayStateAnimation;
 
-    private void OnDisable() => 
-        PlayerState.OnStateChange -= PlayStateAnimation;
+    private void OnDisable() =>
+        _playerAnimator.PlayerState.OnStateChange -= PlayStateAnimation;
 
     private void PlayStateAnimation(State state)
     {
