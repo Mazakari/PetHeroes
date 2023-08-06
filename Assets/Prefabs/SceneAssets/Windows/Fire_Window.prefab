@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 807050254386750367}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &898862134616057354
 SpriteRenderer:
@@ -93,10 +93,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2351576761574910193}
     m_Modifications:
-    - target: {fileID: 2957102647817875647, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
-      propertyPath: _drop
-      value: 
-      objectReference: {fileID: 5161635215736817455}
     - target: {fileID: 4088782930690227921, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
       propertyPath: m_Name
       value: FireRoom
@@ -155,14 +151,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6302251203775471420, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
   m_PrefabInstance: {fileID: 6648773175919049891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5161635215736817455 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2009977742848637836, guid: 8a0c0b2b234ceab46aae2c0544ffb689, type: 3}
-  m_PrefabInstance: {fileID: 6648773175919049891}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6defebad103a04b87a01f1ce52896a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
