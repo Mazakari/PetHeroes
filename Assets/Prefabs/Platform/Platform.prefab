@@ -170,8 +170,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758265041652258322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5964155452283192762}
@@ -218,12 +218,12 @@ SpriteRenderer:
   m_SortingLayerID: -881802591
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2bc33aaef32edf544a9900bf8834f5d8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 6185242214051606407}
   - component: {fileID: 4698651454055748408}
   - component: {fileID: 807945490488840603}
+  - component: {fileID: 5616419250314797459}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -314,7 +315,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 2}
+  m_Size: {x: 12.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &4420243632359596281
 MonoBehaviour:
@@ -387,6 +388,7 @@ MonoBehaviour:
   _directionChangeDeadZone: 0.1
   _forceDecreaseMultiplier: 4
   _sound: {fileID: 4698651454055748408}
+  _bounceAnimation: {fileID: 5616419250314797459}
 --- !u!114 &4698651454055748408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +499,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5616419250314797459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7043445778247291370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05d44956d89c8a428e33339db75c944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteSwitchDelay: 0.1
+  _bodyRenderer: {fileID: 3528792981589339534}
+  _idleSprite: {fileID: 21300000, guid: 2bc33aaef32edf544a9900bf8834f5d8, type: 3}
+  _bendDownSprite: {fileID: 21300000, guid: 85cb4e05b4ea1f94a8b19ab027166a3d, type: 3}
+  _bendUpSprite: {fileID: 21300000, guid: 392a7c8857cf2b34481c81c51f9b069b, type: 3}
 --- !u!1001 &2938632496149240871
 PrefabInstance:
   m_ObjectHideFlags: 0
