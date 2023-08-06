@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: -881802591
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a3f28c9f26dcceb4fa73827699ce06f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cf5e7bb0fb1c0e47b808d3485162be1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1116274925213458970}
   _playerState: {fileID: 1146643033853283390}
-  _playerJumpUpSprite: {fileID: 21300000, guid: a3f28c9f26dcceb4fa73827699ce06f6, type: 3}
-  _playerFallDownSprite: {fileID: 21300000, guid: de9773d431447e3439805a7bbe9f65e2, type: 3}
+  _playerJumpUpSprite: {fileID: 21300000, guid: 1cf5e7bb0fb1c0e47b808d3485162be1, type: 3}
+  _playerFallDownSprite: {fileID: 21300000, guid: aaf1380d16d6a594d8c748ab03da8abf, type: 3}
   _playerHangingSprite: {fileID: 0}
   _playerWinSprite: {fileID: 0}
 --- !u!114 &7290008754008930345
