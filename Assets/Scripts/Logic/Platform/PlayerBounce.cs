@@ -39,10 +39,20 @@ public class PlayerBounce : MonoBehaviour
             Vector2 newDirection = new(direction * Mathf.Abs(difference * (player.Force / _forceDecreaseMultiplier)), player.Force);
             player.AddPlayerLaunchForce(newDirection);
             PlayCollisionSound();
-            _bounceAnimation.PlayAnimation();
+            PlayPlatformBounceAnimation();
+
             Debug.Log($"Collision {gameObject.name}");
         }
     }
+
+    private void PlayPlatformBounceAnimation()
+    {
+        if (_bounceAnimation != null)
+        {
+            _bounceAnimation.PlayAnimation();
+        }
+    }
+
     private bool BallOutsideDeathZone(float difference) =>
         Mathf.Abs(difference) > _directionChangeDeadZone;
     private static float RoundXPosValue(float value) =>
