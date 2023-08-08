@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5967930902402575654}
   - component: {fileID: 5967930902402575655}
   - component: {fileID: 5967930902402575672}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -881802591
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: -715537363
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3770968622880793076, guid: 19542905a3333f54e975640caa512816, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7618406359336639353}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PointB
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7618406359789970638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PointA
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3234614849811993954}
   - component: {fileID: 7694307819867234265}
   - component: {fileID: 5410409901926661311}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,6 +364,7 @@ MonoBehaviour:
   _directionChangeDeadZone: 0.1
   _forceDecreaseMultiplier: 3
   _sound: {fileID: 3234614849811993954}
+  _bounceAnimation: {fileID: 0}
 --- !u!1 &7618406360346413288
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7618406360346413290}
   - component: {fileID: 4420934074442274410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FlyingObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
