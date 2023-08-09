@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1814221028637730107}
   - component: {fileID: 3234614849811993954}
   - component: {fileID: 7694307819867234265}
-  - component: {fileID: 5410409901926661311}
+  - component: {fileID: 4121837545834840498}
   m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
@@ -349,7 +349,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5410409901926661311
+--- !u!114 &4121837545834840498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,13 +358,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7618406360298040846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48300f066069d4b4bb77fb75f93f90c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 17efb15b5881e304fa02b157f0b86163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _directionChangeDeadZone: 0.1
   _forceDecreaseMultiplier: 3
   _sound: {fileID: 3234614849811993954}
-  _bounceAnimation: {fileID: 0}
 --- !u!1 &7618406360346413288
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +397,7 @@ Transform:
   - {fileID: 7618406359789970638}
   - {fileID: 7618406359336639353}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4420934074442274410
 MonoBehaviour:

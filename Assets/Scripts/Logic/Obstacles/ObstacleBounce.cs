@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class PlayerBounce : MonoBehaviour, IBouncable
+public class ObstacleBounce : MonoBehaviour, IBouncable
 {
     [SerializeField] private float _directionChangeDeadZone = 0.1f;
     [SerializeField] private int _forceDecreaseMultiplier = 3;
     [SerializeField] private ItemSound _sound;
-    [SerializeField] private BounceAnimation _bounceAnimation;
 
-    private void OnCollisionEnter2D(Collision2D collision) => 
+    private void OnCollisionEnter2D(Collision2D collision) =>
         BounceOff(collision);
 
     public void BounceOff(Collision2D collision)
@@ -39,17 +38,8 @@ public class PlayerBounce : MonoBehaviour, IBouncable
             Vector2 newDirection = new(direction * Mathf.Abs(difference * (player.Force / _forceDecreaseMultiplier)), player.Force);
             player.AddPlayerLaunchForce(newDirection);
             PlayCollisionSound();
-            PlayPlatformBounceAnimation();
 
             Debug.Log($"Collision {gameObject.name}");
-        }
-    }
-
-    private void PlayPlatformBounceAnimation()
-    {
-        if (_bounceAnimation != null)
-        {
-            _bounceAnimation.PlayAnimation();
         }
     }
 
@@ -58,6 +48,6 @@ public class PlayerBounce : MonoBehaviour, IBouncable
     private static float RoundXPosValue(float value) =>
         Mathf.Round(value * 100f) / 100f;
 
-    private void PlayCollisionSound() => 
+    private void PlayCollisionSound() =>
         _sound.Play();
 }

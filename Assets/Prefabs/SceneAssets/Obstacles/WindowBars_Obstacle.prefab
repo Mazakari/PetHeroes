@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2666629040647006171}
   - component: {fileID: 4288143807777894336}
   - component: {fileID: 8316264133829218338}
+  - component: {fileID: 847062682132130101}
   - component: {fileID: 7543933024507444229}
   - component: {fileID: 4358266499439971946}
   - component: {fileID: 9096084480701833217}
@@ -94,11 +95,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef300bdd66239746972dbb1fe787379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
   _playerLayer: 6
   _sound: {fileID: 4358266499439971946}
+  _obstacleHealth: {fileID: 847062682132130101}
+--- !u!114 &847062682132130101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755273350096087507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956ce13f814afc548a756582915379b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 2
   _collider: {fileID: 4288143807777894336}
-  _switch: {fileID: 7543933024507444229}
+  _switchHealthSprite: {fileID: 7543933024507444229}
 --- !u!114 &7543933024507444229
 MonoBehaviour:
   m_ObjectHideFlags: 0
