@@ -383,6 +383,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8461328011980179781, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -412,14 +416,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7698406737630386251}
     m_Modifications:
-    - target: {fileID: 99723436475620883, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 99723436475620883, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2664684659314812905, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -467,18 +463,6 @@ PrefabInstance:
     - target: {fileID: 5358291931755788563, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
       propertyPath: m_Name
       value: SavedVictimRight
-      objectReference: {fileID: 0}
-    - target: {fileID: 5358291931755788563, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7092747653316601202, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7149798446000879847, guid: 305fab2b6344e36448f2f6d55a40e8df, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

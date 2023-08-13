@@ -3,7 +3,8 @@ using UnityEngine;
 public class VictimsRoom : MonoBehaviour
 {
     [SerializeField] private GameObject[] _victimsPrefabs;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Transform _victimsSpawnPoint;
+
     [SerializeField] private BoxCollider2D _roomCollider;
 
     private Victim[] _victims;
@@ -17,7 +18,6 @@ public class VictimsRoom : MonoBehaviour
         _currentVictim;
     public void ActivateNextVictim()
     {
-        DeactivateCurrentVictim();
         _currentVictimIndex++;
 
         if (_currentVictimIndex < _victims.Length)
@@ -30,11 +30,8 @@ public class VictimsRoom : MonoBehaviour
         }
     }
 
-    private void DeactivateCurrentVictim()
-    {
-        _victims[_currentVictimIndex].gameObject.SetActive(false);
-        SetRoomSprite(null);
-    }
+    //private void DeactivateCurrentVictim() => 
+    //    _victims[_currentVictimIndex].gameObject.SetActive(false);
 
     private void InitRoom()
     {
@@ -62,7 +59,7 @@ public class VictimsRoom : MonoBehaviour
     }
     private GameObject SpawnVictim(int i)
     {
-        GameObject victim = Instantiate(_victimsPrefabs[i], transform);
+        GameObject victim = Instantiate(_victimsPrefabs[i], _victimsSpawnPoint);
         victim.SetActive(false);
         return victim;
     }
@@ -74,9 +71,5 @@ public class VictimsRoom : MonoBehaviour
         _currentVictim = _victims[_currentVictimIndex];
 
         _currentVictim.gameObject.SetActive(true);
-        SetRoomSprite(_currentVictim.GetSprite());
     }
-
-    private void SetRoomSprite(Sprite sprite) =>
-       _spriteRenderer.sprite = sprite;
 }

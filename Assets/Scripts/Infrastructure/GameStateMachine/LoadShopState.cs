@@ -100,13 +100,22 @@ public class LoadShopState : IPayloadedState<string>
     {
         for (int i = 0; i < shopItemsCollection.Count; i++)
         {
-            SetModelPosition(parent, shopItemsCollection[i]);
+            SetModelTransform(parent, shopItemsCollection[i]);
         }
     }
 
-    private void SetModelPosition(Transform parent, ShopItem item)
+    private void SetModelTransform(Transform parent, ShopItem item)
     {
-        item.ItemModel.transform.SetParent(parent);
-        item.ItemModel.transform.localPosition = Vector3.zero;
+        SetItemModelParent(parent, item);
+        ResetItemModelPosition(item);
+        IncreaseItemModelLocalScale(item);
     }
+    private void SetItemModelParent(Transform parent, ShopItem item) => 
+        item.ItemModel.transform.SetParent(parent);
+
+    private void ResetItemModelPosition(ShopItem item) => 
+        item.ItemModel.transform.localPosition = Vector3.zero;
+
+    private void IncreaseItemModelLocalScale(ShopItem item) => 
+        item.ItemModel.transform.localScale = Vector3.one * 10f;
 }

@@ -755,6 +755,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6123056592437951364}
     m_Modifications:
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: e538b4625df89a64b8da851fc75be36a, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 6990050d6a78d3742ac3b4a45efcbb0b, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 8c427ef0f4b751843be83061b7f32074, type: 3}
     - target: {fileID: 3100841982882993115, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
       propertyPath: m_Name
       value: Victim_Window (2)

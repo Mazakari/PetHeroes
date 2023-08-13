@@ -4,12 +4,13 @@ public class FireRoom : MonoBehaviour
 {
     public bool InFire {get; private set;}
 
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private BoxCollider2D _roomCollider;
-    [SerializeField] private Sprite[] _fireSprites;
+    [SerializeField] private GameObject[] _firePrefabs;
     [SerializeField] private float _maxFireTimer;
         
     private int _currentFireIndex;
+    private int _previousFireIndex;
+
     private float _currentFireTimer = 0;
 
     private ILevelProgressService _levelProgressService;
@@ -25,8 +26,9 @@ public class FireRoom : MonoBehaviour
 
     public void DecreaseCurrentFireIndex()
     {
+        _previousFireIndex = _currentFireIndex;
         _currentFireIndex--;
-        _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _fireSprites.Length - 1);
+        _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _firePrefabs.Length - 1);
         if (_currentFireIndex > 0)
         {
             ResetFireTimer();
@@ -43,11 +45,9 @@ public class FireRoom : MonoBehaviour
         PlayFireGrowthSound();
     }
 
-    
-
     private void InitFireRoom()
     {
-        if (_fireSprites.Length > 0)
+        if (_firePrefabs.Length > 0)
         {
             InFire = true;
             InitFireArray();
@@ -60,13 +60,20 @@ public class FireRoom : MonoBehaviour
     }
     private void InitFireArray()
     {
-        int fireSpriteNumber = _fireSprites.Length;
-        int indexRnd = Random.Range(1, fireSpriteNumber);
+        int prefabsCount = _firePrefabs.Length;
+        int indexRnd = Random.Range(1, prefabsCount);
         _currentFireIndex = indexRnd;
-        Debug.Log(indexRnd);
+        _previousFireIndex = _currentFireIndex;
+        Debug.Log($"Initial current index = {_currentFireIndex}");
     }
-    private void ActivateCurrentFire() =>
-       _spriteRenderer.sprite = _fireSprites[_currentFireIndex];
+    private void ActivateCurrentFire()
+    {
+        //Debug.Log($"Previous index = {_previousFireIndex}");
+        //Debug.Log($"Current index = {_currentFireIndex}");
+        _firePrefabs[_previousFireIndex].SetActive(false);
+        _firePrefabs[_currentFireIndex].SetActive(true);
+    }
+
     private void PlayFireGrowthSound()
     {
         if (_currentFireIndex > 0)
@@ -100,8 +107,9 @@ public class FireRoom : MonoBehaviour
    
     private void FireStatus()
     {
+        _previousFireIndex = _currentFireIndex;
         _currentFireIndex++;
-        _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _fireSprites.Length - 1);
+        _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _firePrefabs.Length - 1);
         ActivateCurrentFire();
     }
 }

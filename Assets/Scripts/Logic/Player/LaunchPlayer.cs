@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LaunchPlayer : MonoBehaviour
 {
@@ -79,6 +80,11 @@ public class LaunchPlayer : MonoBehaviour
 
     private void LaunchBall(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (_isActive == false)
         {
             Launch();

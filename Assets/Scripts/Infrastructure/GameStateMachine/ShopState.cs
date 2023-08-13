@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class ShopState : IState
+﻿public class ShopState : IState
 {
     private readonly GameStateMachine _gameStateMachine;
 

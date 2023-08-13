@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skin_1
   m_EditorClassIdentifier: 
   _type: 0
-  _shopSprite: {fileID: -501170354, guid: 1dfa4cb6bb29dcc4c9f499666c0f0dd7, type: 3}
-  _skinPrefab: {fileID: 1556676933313602387, guid: f5aace83daea30e4aa6800029f5e551e, type: 3}
+  _shopSprite: {fileID: 21300000, guid: a5e7b25888b7fad44a11e8bc8f0c6f0d, type: 3}
+  _skinPrefab: {fileID: 1556676933313602387, guid: a7de9a85b5fef634d80cdcae5112ad5b, type: 3}
   _unlockCost: 100
   _isLocked: 1
