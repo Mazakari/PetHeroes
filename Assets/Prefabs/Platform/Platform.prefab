@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8272874570990671982}
   - component: {fileID: 9146605156806896659}
   - component: {fileID: 6587591391558693478}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ScoreDisplays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5226713623206351775}
   - component: {fileID: 3528792981589339534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 4698651454055748408}
   - component: {fileID: 807945490488840603}
   - component: {fileID: 5616419250314797459}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ Transform:
   - {fileID: 274633001820378045}
   - {fileID: 5226713623206351775}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6438927285827365053
 BoxCollider2D:
@@ -568,9 +568,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3548472649889383670, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
+      propertyPath: m_Name
+      value: CanvasRightBasketScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548472649889383670, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141006433542513638, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8989618579241642896, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
       propertyPath: m_Name
       value: RightScoreDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989618579241642896, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -649,6 +665,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 8578021439117803994, guid: 71ea8f0dcdc3fe140913aea3b02e9dcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -711,9 +731,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3548472649889383670, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141006433542513638, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8989618579241642896, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
       propertyPath: m_Name
       value: LeftScoreDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989618579241642896, guid: c7247f16bec6c8e499606edfbab9df5f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

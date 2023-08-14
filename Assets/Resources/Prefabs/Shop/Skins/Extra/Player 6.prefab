@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 5878824416769129426}
-  _force: 20
+  _force: 30
 --- !u!114 &8294578904971956461
 MonoBehaviour:
   m_ObjectHideFlags: 0
