@@ -5,6 +5,7 @@ public class VictimScores : MonoBehaviour
     [SerializeField] private int _playerLayer;
     [SerializeField] private ShowVictimScore[] _victimScores;
     [SerializeField] private ItemSound _itemSound;
+    private bool _victimRescued = false;
 
     private int _totalScores = 0;
     private  int _score;
@@ -27,7 +28,6 @@ public class VictimScores : MonoBehaviour
                 GetAndShowBasketsScores(basketsControl);
                 UpdateTotalScoresInUi();
                 DeactivateBaskets(basketsControl);
-                // TO DO Find save victim sound
                 Playsound();
             }
         }
@@ -35,6 +35,7 @@ public class VictimScores : MonoBehaviour
 
     private void GetAndShowBasketsScores(VictimBasketsControl basketsControl)
     {
+        _victimRescued = false;
         _totalScores = 0;
         for (int i = 0; i < basketsControl.Basket.Length; i++)
         {
@@ -47,8 +48,18 @@ public class VictimScores : MonoBehaviour
                     ShowScoreInUi(basketsControl, i);
                     IncrementTotalScores();
                     Debug.Log($"Scores = {_totalScores}");
+
+                    CheckIfAnyVictimRescued();
                 }
             }
+        }
+    }
+
+    private void CheckIfAnyVictimRescued()
+    {
+        if (VictimRescued())
+        {
+            _victimRescued = true;
         }
     }
 
@@ -69,6 +80,14 @@ public class VictimScores : MonoBehaviour
     private void DeactivateBaskets(VictimBasketsControl basketsControl) => 
         basketsControl.DeactivateBaskets();
 
-    private void Playsound() =>
-        _itemSound.Play();
+    private void Playsound()
+    {
+        if (_victimRescued == true)
+        {
+            _itemSound.Play();
+        }
+    }
+
+    private bool VictimRescued() =>
+        _score > 0;
 }

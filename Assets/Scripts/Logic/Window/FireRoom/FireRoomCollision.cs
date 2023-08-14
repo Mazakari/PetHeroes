@@ -12,7 +12,6 @@ public class FireRoomCollision : MonoBehaviour
         if (collision.gameObject.layer == _playerLayer)
         {
             DecreaseFireLevelAndDropItem();
-            // TO DO Add sound
         }
     }
 

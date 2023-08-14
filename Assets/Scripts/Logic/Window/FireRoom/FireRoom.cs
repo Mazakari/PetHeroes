@@ -3,11 +3,12 @@ using UnityEngine;
 public class FireRoom : MonoBehaviour
 {
     public bool InFire {get; private set;}
-
+    [SerializeField] private FireSound _sound;
     [SerializeField] private BoxCollider2D _roomCollider;
     [SerializeField] private GameObject[] _firePrefabs;
     [SerializeField] private float _maxFireTimer;
-        
+    private bool _fireMaxed = false;
+
     private int _currentFireIndex;
     private int _previousFireIndex;
 
@@ -32,17 +33,15 @@ public class FireRoom : MonoBehaviour
         if (_currentFireIndex > 0)
         {
             ResetFireTimer();
+            _fireMaxed = false;
         }
         else
         {
             ExtiguishFire();
-            // TO DO Add sound on fire extinguished
         }
 
         ActivateCurrentFire();
-
-        // TO DO Play fire growth sound
-        PlayFireGrowthSound();
+        PlayFireDownSound();
     }
 
     private void InitFireRoom()
@@ -74,14 +73,6 @@ public class FireRoom : MonoBehaviour
         _firePrefabs[_currentFireIndex].SetActive(true);
     }
 
-    private void PlayFireGrowthSound()
-    {
-        if (_currentFireIndex > 0)
-        {
-            // TO DO Play fire growth sound
-        }
-    }
-
     private void FireTimer()
     {
         if(InFire == true)
@@ -92,9 +83,11 @@ public class FireRoom : MonoBehaviour
                 ResetFireTimer();
                 FireStatus();
 
+                PlayFireGrowthSound();
             }
         }
     }
+
     private void ResetFireTimer() =>
        _currentFireTimer = 0;
 
@@ -110,6 +103,27 @@ public class FireRoom : MonoBehaviour
         _previousFireIndex = _currentFireIndex;
         _currentFireIndex++;
         _currentFireIndex = Mathf.Clamp(_currentFireIndex, 0, _firePrefabs.Length - 1);
+        CheckIfMaximumFire();
+
         ActivateCurrentFire();
     }
+
+    private void CheckIfMaximumFire()
+    {
+        if (_previousFireIndex == _currentFireIndex && _fireMaxed == false)
+        {
+            _fireMaxed = true;
+        }
+    }
+
+    private void PlayFireGrowthSound()
+    {
+        if (_fireMaxed == false)
+        {
+            _sound.PlayFireGrowSound();
+        }
+    }
+
+    private void PlayFireDownSound() =>
+        _sound.PlayFireDownSound();
 }

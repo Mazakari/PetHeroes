@@ -135,7 +135,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 2867517540678359602, guid: 8b039cb3ce8eb8e4a84bef6741ee4532, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9669960e415ea604d81fb0784634df79, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f77ac0e0145350542975e4627a59c1fb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
@@ -339,10 +339,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelComplete_Popup
       objectReference: {fileID: 0}
-    - target: {fileID: 3338503318013291556, guid: 8dc0333b87b8e4244abb70370c4da8de, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8523048658733691426, guid: 8dc0333b87b8e4244abb70370c4da8de, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -425,10 +421,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8523048658733691426, guid: 8dc0333b87b8e4244abb70370c4da8de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593234172250256427, guid: 8dc0333b87b8e4244abb70370c4da8de, type: 3}
-      propertyPath: m_OverridePixelPerfect
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
