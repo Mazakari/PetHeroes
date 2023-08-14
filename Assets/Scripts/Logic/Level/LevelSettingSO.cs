@@ -10,12 +10,4 @@ public class LevelSettingSO : ScriptableObject
     [SerializeField] private bool _levelLocked = false;
     public bool LevelLocked => _levelLocked;
 
-
-    [Header("Artifact Settings")]
-    [Space(10)]
-    [SerializeField] private Sprite _levelArtifactSprite;
-    public Sprite LevelArtifactSprite => _levelArtifactSprite;
-
-    [SerializeField] private bool _artifactLocked = false;
-    public bool ArtifactLocked => _artifactLocked;
 }
