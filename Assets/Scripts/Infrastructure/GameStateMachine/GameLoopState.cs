@@ -13,13 +13,10 @@ public class GameLoopState : IState
     public static event Action<string> OnNextLevelNameSet;
     public static event Action<int> OnCurrentLevelSet;
 
-    private ILevelProgressService _levelProgressService;
-
-    public GameLoopState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, ILevelProgressService levelProgress)
+    public GameLoopState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
     {
         _gameStateMachine = gameStateMachine;
         _sceneLoader = sceneLoader;
-        _levelProgressService = levelProgress;
     }
 
     public void Enter()
@@ -32,7 +29,6 @@ public class GameLoopState : IState
         GameplayCanvas.OnNextLevel += LoadNextLevel;
 
         GameplayCanvas.OnRestartLevel += RestartLevel;
-        _levelProgressService.OnGameOver += RestartLevel;
        
     }
     public void Exit()
@@ -41,7 +37,6 @@ public class GameLoopState : IState
         GameplayCanvas.OnNextLevel -= LoadNextLevel;
 
         GameplayCanvas.OnRestartLevel -= RestartLevel;
-        _levelProgressService.OnGameOver -= RestartLevel;
     }
 
     private void SetLevelNames()

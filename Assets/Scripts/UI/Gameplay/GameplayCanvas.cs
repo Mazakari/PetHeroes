@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static GameMetaData;
 
 public class GameplayCanvas : MonoBehaviour, ISavedProgress
 {
     [SerializeField] private LevelCompletePopup _LevelCompletePopup;
-    [SerializeField] private Image _levelArtifactImage;
+    [SerializeField] private GameObject _LevelLosePopup;
 
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private CurrentLevelDisplay _levelDisplay;
@@ -31,24 +30,34 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
         _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
         _timeService = AllServices.Container.Single<ITimeService>();
 
-        _LevelCompletePopup.gameObject.SetActive(false);
+        InitPopups();
 
         _levelProgressService.OnLevelWin += ShowLevelCompletePopup;
+        _levelProgressService.OnGameOver += ShowLevelLosePopup;
+
         GameLoopState.OnNextLevelNameSet += UpdateNextLevel;
         GameLoopState.OnCurrentLevelSet += UpdateCurrentLevel;
 
         UpdateLevelDisplay();
-       
+
     }
 
     private void OnDisable()
     {
         _mainMenuButton.onClick.RemoveAllListeners();
+
         _levelProgressService.OnLevelWin -= ShowLevelCompletePopup;
+        _levelProgressService.OnGameOver -= ShowLevelLosePopup;
+
         GameLoopState.OnNextLevelNameSet -= UpdateNextLevel;
         GameLoopState.OnCurrentLevelSet -= UpdateCurrentLevel;
 
         _timeService.ResumeGame();
+    }
+    private void InitPopups()
+    {
+        _LevelCompletePopup.gameObject.SetActive(false);
+        _LevelLosePopup.SetActive(false);
     }
 
     private void ShowLevelCompletePopup()
@@ -60,6 +69,12 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
         _LevelCompletePopup.gameObject.SetActive(true);
 
         ShowYandexRateGamePopup();
+    }
+
+    private void ShowLevelLosePopup()
+    {
+        _timeService.PauseGame();
+        _LevelLosePopup.SetActive(true);
     }
 
     // Send callback for GameLoopState
@@ -77,7 +92,6 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
 
     public void UpdateProgress(PlayerProgress progress)
     {
-
         progress.gameData.nextLevel = _nextLevelName;
         CopyProgress(_levelCellsService.LevelsData, progress.gameData.levels);
     }
