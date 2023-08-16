@@ -1139,9 +1139,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5579060929082098549, guid: c5d8c23e277559a4aade5887265e6a98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7269663199056915181, guid: c5d8c23e277559a4aade5887265e6a98, type: 3}
       propertyPath: m_Name
       value: Chicken_Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008107282217630459, guid: c5d8c23e277559a4aade5887265e6a98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2374,9 +2382,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5579060929082098549, guid: 142c23370fd0c7a44b8a2daef06809ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 7269663199056915181, guid: 142c23370fd0c7a44b8a2daef06809ba, type: 3}
       propertyPath: m_Name
       value: Eagle_Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008107282217630459, guid: 142c23370fd0c7a44b8a2daef06809ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
