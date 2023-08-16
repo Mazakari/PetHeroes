@@ -15,5 +15,5 @@ MonoBehaviour:
   _type: 0
   _shopSprite: {fileID: 21300000, guid: fd2a9a0569a699a4b886f7f175b81fc6, type: 3}
   _skinPrefab: {fileID: 1556676933313602387, guid: 67bdc3db76748554ea6288b79d6fe008, type: 3}
-  _unlockCost: 1700
+  _unlockCost: 2700
   _isLocked: 1

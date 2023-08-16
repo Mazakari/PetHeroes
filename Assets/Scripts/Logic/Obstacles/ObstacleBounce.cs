@@ -6,7 +6,7 @@ public class ObstacleBounce : MonoBehaviour, IBouncable
     [SerializeField] private int _forceDecreaseMultiplier = 3;
     [SerializeField] private ItemSound _sound;
 
-    private void OnCollisionEnter2D(Collision2D collision) =>
+    private void OnCollisionEnter2D(Collision2D collision) => 
         BounceOff(collision);
 
     public void BounceOff(Collision2D collision)
@@ -14,6 +14,7 @@ public class ObstacleBounce : MonoBehaviour, IBouncable
         if (collision.gameObject.TryGetComponent(out LaunchPlayer player))
         {
             CalculateBounceDirection(collision, player);
+            PlayCollisionSound();
         }
     }
     private void CalculateBounceDirection(Collision2D collision, LaunchPlayer player)
@@ -37,7 +38,7 @@ public class ObstacleBounce : MonoBehaviour, IBouncable
 
             Vector2 newDirection = new(direction * Mathf.Abs(difference * (player.Force / _forceDecreaseMultiplier)), player.Force);
             player.AddPlayerLaunchForce(newDirection);
-            PlayCollisionSound();
+            
 
             Debug.Log($"Collision {gameObject.name}");
         }
