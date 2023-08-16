@@ -568,6 +568,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 34583312}
     m_Modifications:
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 8c427ef0f4b751843be83061b7f32074, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 6990050d6a78d3742ac3b4a45efcbb0b, type: 3}
     - target: {fileID: 3100841982882993115, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
       propertyPath: m_Name
       value: Victim_Window
@@ -928,6 +940,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688386985}
     m_Modifications:
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 8c427ef0f4b751843be83061b7f32074, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 6990050d6a78d3742ac3b4a45efcbb0b, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: e538b4625df89a64b8da851fc75be36a, type: 3}
     - target: {fileID: 3100841982882993115, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
       propertyPath: m_Name
       value: Victim_Window
@@ -1191,6 +1219,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 934036782}
     m_Modifications:
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: e538b4625df89a64b8da851fc75be36a, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 6990050d6a78d3742ac3b4a45efcbb0b, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 8c427ef0f4b751843be83061b7f32074, type: 3}
     - target: {fileID: 3100841982882993115, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
       propertyPath: m_Name
       value: Victim_Window
@@ -1642,6 +1686,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688386985}
     m_Modifications:
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 8c427ef0f4b751843be83061b7f32074, type: 3}
+    - target: {fileID: 863459240825531020, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
+      propertyPath: _victimsPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 3236462717257023644, guid: 6990050d6a78d3742ac3b4a45efcbb0b, type: 3}
     - target: {fileID: 3100841982882993115, guid: c64a815683b4c99449821d8ce9da2753, type: 3}
       propertyPath: m_Name
       value: Victim_Window
