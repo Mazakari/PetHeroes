@@ -3,7 +3,7 @@ using UnityEngine;
 public class FireRoom : MonoBehaviour
 {
     public bool InFire {get; private set;}
-    [SerializeField] private FireSound _sound;
+    
     [SerializeField] private BoxCollider2D _roomCollider;
     [SerializeField] private GameObject[] _firePrefabs;
     [SerializeField] private float _maxFireTimer;
@@ -15,6 +15,11 @@ public class FireRoom : MonoBehaviour
     private float _currentFireTimer = 0;
 
     private ILevelProgressService _levelProgressService;
+
+    [Space(10)]
+    [Header("Effects")]
+    [SerializeField] private FireSound _sound;
+    [SerializeField] private ParticlesEffect _particlesEffect;
 
     private void OnEnable() => 
         _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
@@ -96,6 +101,7 @@ public class FireRoom : MonoBehaviour
         InFire = false;
         _roomCollider.enabled = false;
         _levelProgressService.CheckIfAllFireRoomsExtinguished();
+        _particlesEffect.Play();
     }
    
     private void FireStatus()
