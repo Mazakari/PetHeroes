@@ -10,6 +10,6 @@ public class YandexRewarded : MonoBehaviour
     public void ShowRewarded()
     {
         _yandexService.API.ShowYandexRewarded();
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     }
 }
