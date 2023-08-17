@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8554362218968747854
 RectTransform:
   m_ObjectHideFlags: 0
@@ -398,10 +398,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0420\u041E\u0418\u0413\u0420\u0410\u041B"
+  m_text: "\u041F\u0420\u041E\u0418\u0413\u0420\u0410\u041B!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f7456cc7e5ba75540beb75ce9ed0d4c8, type: 2}
-  m_sharedMaterial: {fileID: 2911154300718882642, guid: f7456cc7e5ba75540beb75ce9ed0d4c8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2c0211bdbfae2b6418efc7c3123ff1da, type: 2}
+  m_sharedMaterial: {fileID: 8815961363575737935, guid: 2c0211bdbfae2b6418efc7c3123ff1da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -431,7 +431,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -480,9 +480,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _localizationText: {fileID: 7940441234012984683}
-  _russianText: "\u041F\u0420\u041E\u0418\u0413\u0420\u0410\u041B"
-  _englishText: LEVEL LOST
-  _turkishText: SEVIYE KAYBI
+  _russianText: "\u041F\u0420\u041E\u0418\u0413\u0420\u0410\u041B!"
+  _englishText: LEVEL LOST!
+  _turkishText: SEVIYE KAYBI!
 --- !u!1001 &5601833636302607530
 PrefabInstance:
   m_ObjectHideFlags: 0

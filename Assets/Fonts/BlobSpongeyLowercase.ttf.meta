@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 90bee26c671008f4ebf085d9f56f7712
+guid: 2c78d4da76051a54aa34f533dab05ad4
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Gawaa
+  - Blob Spongey Lowercase
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
