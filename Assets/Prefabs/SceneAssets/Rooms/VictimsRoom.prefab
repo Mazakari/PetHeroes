@@ -65,7 +65,7 @@ Transform:
   m_Children:
   - {fileID: 7433480174835704380}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &372721549217229492
 BoxCollider2D:
@@ -128,6 +128,11 @@ MonoBehaviour:
   - {fileID: 3236462717257023644, guid: e538b4625df89a64b8da851fc75be36a, type: 3}
   - {fileID: 3236462717257023644, guid: 1ce266b67096cd545a9191566472bf46, type: 3}
   - {fileID: 3236462717257023644, guid: 61286b5b4ba33d5479b9805157852f34, type: 3}
+  - {fileID: 3236462717257023644, guid: fdafc8bd9076f5c4bb507799dd47f7a1, type: 3}
+  - {fileID: 3236462717257023644, guid: 8c427ef0f4b751843be83061b7f32074, type: 3}
+  - {fileID: 7358851258833628704, guid: 5ba51792af749c04aaa38eeac3bbe2cb, type: 3}
+  - {fileID: 3236462717257023644, guid: 6990050d6a78d3742ac3b4a45efcbb0b, type: 3}
+  - {fileID: 2112678084848381419, guid: 8324d9adf5e5aed4597de02de1fdb5e3, type: 3}
   _victimsSpawnPoint: {fileID: 7433480174835704380}
   _roomCollider: {fileID: 372721549217229492}
 --- !u!114 &406485851240115733

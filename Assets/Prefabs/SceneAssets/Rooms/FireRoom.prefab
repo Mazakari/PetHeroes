@@ -261,7 +261,7 @@ MonoBehaviour:
   - {fileID: 4664711416056894803}
   - {fileID: 7917505850532563854}
   - {fileID: 7913487967098320322}
-  _maxFireTimer: 10
+  _maxFireTimer: 20
   _sound: {fileID: 3398709159433556876}
   _particlesEffect: {fileID: 5381072432062292496}
 --- !u!114 &2957102647817875647

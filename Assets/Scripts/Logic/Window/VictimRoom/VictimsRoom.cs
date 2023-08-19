@@ -8,6 +8,7 @@ public class VictimsRoom : MonoBehaviour
     [SerializeField] private BoxCollider2D _roomCollider;
 
     private Victim[] _victims;
+    private int _victimsToSave = 0;
     private int _currentVictimIndex = 0;
     private Victim _currentVictim;
 
@@ -16,11 +17,12 @@ public class VictimsRoom : MonoBehaviour
 
     public Victim GetCurrentVictim() =>
         _currentVictim;
+
     public void ActivateNextVictim()
     {
-        _currentVictimIndex++;
+        GenerateRandomVictimIndex();
 
-        if (_currentVictimIndex < _victims.Length)
+        if (_victimsToSave > 0)
         {
             ActivateCurrentVictim();
         }
@@ -30,21 +32,31 @@ public class VictimsRoom : MonoBehaviour
         }
     }
 
-    //private void DeactivateCurrentVictim() => 
-    //    _victims[_currentVictimIndex].gameObject.SetActive(false);
+    private void GenerateRandomVictimIndex()
+    {
+        int rnd = Random.Range(0, _victims.Length);
+        while (_victims[rnd].gameObject.activeSelf) 
+        {
+            rnd = Random.Range(0, _victims.Length);
+        }
+
+        _currentVictimIndex = rnd;
+    }
 
     private void InitRoom()
     {
-        _currentVictimIndex = 0;
-
         InitVictimsArray();
         SpawnVictimsPrefabs();
+
+        GenerateRandomVictimIndex();
         ActivateCurrentVictim();
+
     }
 
     private void InitVictimsArray()
     {
         int victimsCount = _victimsPrefabs.Length;
+        _victimsToSave = victimsCount;
         _victims = new Victim[victimsCount];
     }
     private void SpawnVictimsPrefabs()
@@ -68,6 +80,7 @@ public class VictimsRoom : MonoBehaviour
    
     private void ActivateCurrentVictim()
     {
+        _victimsToSave--;
         _currentVictim = _victims[_currentVictimIndex];
 
         _currentVictim.gameObject.SetActive(true);

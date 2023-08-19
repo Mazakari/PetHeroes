@@ -24,6 +24,7 @@ public class VolumeControl : MonoBehaviour, ISavedProgress
 
     private float _multiplier = 30f;
 
+    //private float _curMusicVol;
 
     public void HandleMusicSliderValueChanged(float value, Slider slider, Toggle toggle)
     {

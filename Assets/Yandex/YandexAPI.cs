@@ -47,6 +47,8 @@ public class YandexAPI : MonoBehaviour
 
     private ITimeService _timeService;
 
+    public static Action OnYandexAdsStart;
+
     private void Awake() =>
         DontDestroyOnLoad(this);
 
@@ -133,10 +135,13 @@ public class YandexAPI : MonoBehaviour
         OnRewardedVideoWatched?.Invoke();
     }
 
-    public void PauseGame() =>
+    public void PauseGame()
+    {
+        SendYandexAdsStartCallback();
         _timeService.PauseGame();
+    }
 
-    public void UnPauseGame() =>
+    public void UnPauseGame() => 
         _timeService.ResumeGame();
 
     public void LoadYandexProgressAfterAuthorization()
@@ -147,4 +152,7 @@ public class YandexAPI : MonoBehaviour
             LoadFromYandex();
         }
     }
+
+    private void SendYandexAdsStartCallback() =>
+       OnYandexAdsStart?.Invoke();
 }

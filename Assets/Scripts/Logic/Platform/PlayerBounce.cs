@@ -40,8 +40,6 @@ public class PlayerBounce : MonoBehaviour, IBouncable
             player.AddPlayerLaunchForce(newDirection);
             PlayCollisionSound();
             PlayPlatformBounceAnimation();
-
-            Debug.Log($"Collision {gameObject.name}");
         }
     }
 

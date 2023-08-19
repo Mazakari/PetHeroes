@@ -65,12 +65,12 @@ mergeInto(LibraryManager.library, {
 			callbacks: {
 			onClose: function(wasShown) {
 				console.log('Interstitial ads shown');
-				myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+				//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
 			// some action after close
         },
         onError: function(error) {
 			console.log('Interstitial ads show failed');
-			myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
           // some action on error
         }
 		}
@@ -88,15 +88,15 @@ mergeInto(LibraryManager.library, {
         onRewarded: () => {
 			console.log('Rewarded!');
 			myGameInstance.SendMessage('YandexAPI', 'RewardedAdsWatched');
-			myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
         },
         onClose: () => {
 			console.log('Video ad closed.');
-			myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
         }, 
         onError: (e) => {
 			console.log('Error while open video ad:', e);
-			myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
         }
 		}
 		})
