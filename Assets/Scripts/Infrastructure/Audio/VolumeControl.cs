@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -115,5 +116,18 @@ public class VolumeControl : MonoBehaviour, ISavedProgress
             SoundsVolume = -80f;
             _audioMixer.SetFloat(_soundsVolumeParameter, SoundsVolume);
         }
+    }
+
+    public void DisableAudio()
+    {
+        float muted = -80f;
+        _audioMixer.SetFloat(_musicVolumeParameter, muted);
+        _audioMixer.SetFloat(_soundsVolumeParameter, muted);
+    }
+
+    public void EnableAudio()
+    {
+        _audioMixer.SetFloat(_musicVolumeParameter, Mathf.Log10(MusicVolume) * _multiplier);
+        _audioMixer.SetFloat(_soundsVolumeParameter, Mathf.Log10(SoundsVolume) * _multiplier);
     }
 }

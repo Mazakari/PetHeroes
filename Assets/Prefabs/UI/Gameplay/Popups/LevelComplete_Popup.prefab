@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6272ec33a011b049802dd734b070ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yandexRewardedButton: {fileID: 1184714612247829410}
+  _yandexRewardedBlock: {fileID: 6569816767872928297}
   _totalScoresCounter: {fileID: 3042798735999887213}
   _itemSound: {fileID: 7297663536598382130}
 --- !u!82 &3275558475536277258
@@ -1575,13 +1575,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550fed1999ae49d4cb1c2a0c32d924d2, type: 3}
---- !u!1 &1184714612247829410 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5418513487143951653, guid: 550fed1999ae49d4cb1c2a0c32d924d2, type: 3}
-  m_PrefabInstance: {fileID: 6575993122715584135}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2791408915268576434 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9079130925130768949, guid: 550fed1999ae49d4cb1c2a0c32d924d2, type: 3}
+  m_PrefabInstance: {fileID: 6575993122715584135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6569816767872928297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 31018793579269294, guid: 550fed1999ae49d4cb1c2a0c32d924d2, type: 3}
   m_PrefabInstance: {fileID: 6575993122715584135}
   m_PrefabAsset: {fileID: 0}

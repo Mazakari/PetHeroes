@@ -109,7 +109,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""id"": ""f4484971-5662-4477-bf09-248727959744"",
                     ""path"": ""<Touchscreen>/primaryTouch/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=0.1,y=0.1)"",
                     ""groups"": ""Mobile"",
                     ""action"": ""Move"",
                     ""isComposite"": false,

@@ -59,18 +59,18 @@ mergeInto(LibraryManager.library, {
 	},
 	
 	ShowFullscrenAds : function () {
-		myGameInstance.SendMessage('YandexAPI', 'PauseGame');
+		myGameInstance.SendMessage('YandexAPI', 'MuteAudioOnYandexAdsShow');
 		
 		ysdk.adv.showFullscreenAdv({
 			callbacks: {
 			onClose: function(wasShown) {
 				console.log('Interstitial ads shown');
-				//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+				myGameInstance.SendMessage('YandexAPI', 'UnmuteAudioOnYandexAdsEnd');
 			// some action after close
         },
         onError: function(error) {
 			console.log('Interstitial ads show failed');
-			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			myGameInstance.SendMessage('YandexAPI', 'UnmuteAudioOnYandexAdsEnd');
           // some action on error
         }
 		}
@@ -83,20 +83,20 @@ mergeInto(LibraryManager.library, {
 		callbacks: {
 		onOpen: () => {
 			console.log('Video ad open.');
-			myGameInstance.SendMessage('YandexAPI', 'PauseGame');
+			myGameInstance.SendMessage('YandexAPI', 'MuteAudioOnYandexAdsShow');
         },
         onRewarded: () => {
 			console.log('Rewarded!');
 			myGameInstance.SendMessage('YandexAPI', 'RewardedAdsWatched');
-			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			myGameInstance.SendMessage('YandexAPI', 'UnmuteAudioOnYandexAdsEnd');
         },
         onClose: () => {
 			console.log('Video ad closed.');
-			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			myGameInstance.SendMessage('YandexAPI', 'UnmuteAudioOnYandexAdsEnd');
         }, 
         onError: (e) => {
 			console.log('Error while open video ad:', e);
-			//myGameInstance.SendMessage('YandexAPI', 'UnPauseGame');
+			myGameInstance.SendMessage('YandexAPI', 'UnmuteAudioOnYandexAdsEnd');
         }
 		}
 		})

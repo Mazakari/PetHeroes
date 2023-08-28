@@ -48,6 +48,7 @@ public class YandexAPI : MonoBehaviour
     private ITimeService _timeService;
 
     public static Action OnYandexAdsStart;
+    public static Action OnYandexAdsEnd;
 
     private void Awake() =>
         DontDestroyOnLoad(this);
@@ -108,9 +109,12 @@ public class YandexAPI : MonoBehaviour
             Debug.Log("YandexApi SaveYandexLeaderboard Player Not Authorized");
             return;
         }
-
-        Debug.Log($"Sending new total scores {totalScores}to Yandex leaderboard");
-        UpdateLeaderboardData(totalScores);
+        
+        if (totalScores > 0)
+        {
+            Debug.Log($"Sending new total scores {totalScores}to Yandex leaderboard");
+            UpdateLeaderboardData(totalScores);
+        }
     }
 
     public string GetPlatformLanguage() =>
@@ -135,14 +139,12 @@ public class YandexAPI : MonoBehaviour
         OnRewardedVideoWatched?.Invoke();
     }
 
-    public void PauseGame()
-    {
+    public void MuteAudioOnYandexAdsShow() => 
         SendYandexAdsStartCallback();
-        _timeService.PauseGame();
-    }
 
-    public void UnPauseGame() => 
-        _timeService.ResumeGame();
+    public void UnmuteAudioOnYandexAdsEnd() => 
+        SendYabdexAdsEndCallback();
+
 
     public void LoadYandexProgressAfterAuthorization()
     {
@@ -155,4 +157,8 @@ public class YandexAPI : MonoBehaviour
 
     private void SendYandexAdsStartCallback() =>
        OnYandexAdsStart?.Invoke();
+
+    private void SendYabdexAdsEndCallback() =>
+       OnYandexAdsEnd?.Invoke();
+
 }

@@ -64,6 +64,8 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
     {
         _timeService.PauseGame();
 
+        // TO DO Save completed Level
+
         _levelCellsService.UnlockNextLevel(_nextLevelName);
 
         _LevelCompletePopup.gameObject.SetActive(true);
@@ -123,23 +125,9 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
         }
     }
 
-    private void RewriteCurrentAndNextLevelsData(List<LevelCellsData> targetLevelsData)
-    {
-        UpdateCurrentLevelData(_levelCellsService.CurrentLevelName, targetLevelsData);
+    private void RewriteCurrentAndNextLevelsData(List<LevelCellsData> targetLevelsData) => 
         UpdateNextLevelData(_nextLevelName, targetLevelsData);
-    }
-    private void UpdateCurrentLevelData(string completedLevelName, List<LevelCellsData> targetLevelsData)
-    {
-        LevelCellsData currentData = FindLevelDataInLevelCellService(completedLevelName);
-
-        for (int i = 0; i < targetLevelsData.Count; i++)
-        {
-            if (targetLevelsData[i].sceneName.Equals(completedLevelName))
-            {
-                targetLevelsData[i] = currentData;
-            }
-        }
-    }
+   
     private void UpdateNextLevelData(string nextLevelName, List<LevelCellsData> targetLevelsData)
     {
         LevelCellsData nextLevel = FindLevelDataInLevelCellService(nextLevelName);
@@ -149,6 +137,7 @@ public class GameplayCanvas : MonoBehaviour, ISavedProgress
             if (targetLevelsData[i].sceneName.Equals(nextLevelName))
             {
                 targetLevelsData[i] = nextLevel;
+                return;
             }
         }
     }

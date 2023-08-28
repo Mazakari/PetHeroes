@@ -68,12 +68,9 @@ public class FireRoom : MonoBehaviour
         int indexRnd = Random.Range(1, prefabsCount);
         _currentFireIndex = indexRnd;
         _previousFireIndex = _currentFireIndex;
-        Debug.Log($"Initial current index = {_currentFireIndex}");
     }
     private void ActivateCurrentFire()
     {
-        //Debug.Log($"Previous index = {_previousFireIndex}");
-        //Debug.Log($"Current index = {_currentFireIndex}");
         _firePrefabs[_previousFireIndex].SetActive(false);
         _firePrefabs[_currentFireIndex].SetActive(true);
     }
