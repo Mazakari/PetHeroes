@@ -88,7 +88,7 @@ public class YandexAPI : MonoBehaviour
 
     public void SaveToYandex(string progress)
     {
-        Debug.Log($"SaveToYandex.progress = {progress}");
+        //Debug.Log($"SaveToYandex.progress = {progress}");
         SavePlayerDataToYandex(progress);
     }
 

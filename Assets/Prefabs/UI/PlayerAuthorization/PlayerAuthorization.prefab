@@ -243,7 +243,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 320, y: 100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4367855968938774592
 CanvasRenderer:
@@ -463,10 +463,10 @@ RectTransform:
   m_Father: {fileID: 4630605060771631195}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 160}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2405994950740332869
 CanvasRenderer:
@@ -496,10 +496,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u0445\u043E\u0434 \u0441 \u043B\u043E\u0433\u0438\u043D\u043E\u043C
-    \u043D\u0430\u0434\u0435\u0436\u043D\u043E \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442
-    \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0438 \u0434\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F
-    \u0432 \u0438\u0433\u0440\u0435"
+  m_text: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442
+    \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0438 \u0434\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c0211bdbfae2b6418efc7c3123ff1da, type: 2}
   m_sharedMaterial: {fileID: 8815961363575737935, guid: 2c0211bdbfae2b6418efc7c3123ff1da, type: 2}
@@ -526,8 +524,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -581,13 +579,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _localizationText: {fileID: 3728509692926266388}
-  _russianText: "\u0412\u0445\u043E\u0434 \u0441 \u043B\u043E\u0433\u0438\u043D\u043E\u043C
-    \u043D\u0430\u0434\u0435\u0436\u043D\u043E \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442
-    \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0438 \u0434\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F
-    \u0432 \u0438\u0433\u0440\u0435"
-  _englishText: Logging in will securely save progress and achievements in the game
-  _turkishText: "Giri\u015F yaparak giri\u015F yapmak, oyundaki ilerlemeyi ve ba\u015Far\u0131lar\u0131
-    g\xFCvenli bir \u015Fekilde kaydedecektir"
+  _russianText: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F
+    \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442 \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441
+    \u0438 \u0434\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F"
+  _englishText: Authorization will save game progress and achievements
+  _turkishText: "Yetkilendirme, ilerlemeyi ve ba\u015Far\u0131lar\u0131 kaydedecek"
 --- !u!1 &5014066932852929523
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,10 +822,10 @@ RectTransform:
   m_Father: {fileID: 1910043058044442152}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2510328572583511702
 CanvasRenderer:
@@ -886,8 +882,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

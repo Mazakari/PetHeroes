@@ -79,11 +79,9 @@ public class SceneLoader
 
         if (nextLevelIndex < totalScenesIndexesCount)
         {
-            //return SceneManager.GetSceneByBuildIndex(nextLevelIndex).name;
             return _buildIndexScenesNames[nextLevelIndex];
         }
 
-        //return SceneManager.GetActiveScene().name;
         return _buildIndexScenesNames[nextLevelIndex - 1];
     }
 

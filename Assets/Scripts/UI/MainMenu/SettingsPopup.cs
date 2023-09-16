@@ -81,6 +81,4 @@ public class SettingsPopup : MonoBehaviour
         _soundsVolumeSlider.value = _volumeControl.SoundsVolume;
         _soundsToggle.isOn = _volumeControl.SoundsOn;
     }
-
-    
 }

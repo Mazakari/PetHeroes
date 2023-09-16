@@ -26,10 +26,20 @@ mergeInto(LibraryManager.library, {
 	SavePlayerDataToYandex: function (playerData) {
 		var dataString = UTF8ToString(playerData);
 		var myObj = JSON.parse(dataString);
-		player.setData(myObj);
+				
 		console.log(dataString);
 		console.log(myObj);
-    },
+		
+		//For incognito mode in Chrome
+		//player.setData(myObj); 
+		
+		// For game start with link from other browser
+		initPlayer()
+		.then(_player => {
+			console.log(_player);
+			_player.setData(myObj);
+		});
+	},
 	
 	LoadPlayerDataFromYandex: function () {
 		player.getData().then(_data => {
@@ -104,7 +114,11 @@ mergeInto(LibraryManager.library, {
 	
 	AuthorizePlayer : function () {
 		console.log('Plugin Authorize Button');
-		if (player.getMode() === 'lite') {
+		
+		initPlayer()
+		.then(_player => {
+			
+			if (_player.getMode() === 'lite') {
 			// Player not authorized.
 			console.log('Plugin Not authorized');
 			playerAuthorized = false;
@@ -133,34 +147,39 @@ mergeInto(LibraryManager.library, {
 			playerAuthorized = true;
 			console.log('Plugin Authorized');
 		}
-			
-		/* initPlayer().then(_player => {
-			if (_player.getMode() === 'lite') {
-				// Player not authorized.
-				console.log('Plugin Not authorized');
-				playerAuthorized = false;
-					
-				sdk.auth.openAuthDialog().then(() => {
-					// Player authorized successfully
-					console.log('Plugin Authorize Success');
-					playerAuthorized = true;
-					initPlayer().catch(err => {
-                        // Player object initialization error.
-                    });
-                }).catch(() => {
+		});
+
+		//For incognito mode in Chrome
+		/*if (player.getMode() === 'lite') {
+			// Player not authorized.
+			console.log('Plugin Not authorized');
+			playerAuthorized = false;
+			sdk.auth.openAuthDialog().then(() => {
+				// Player authorized successfully
+				console.log('Plugin Authorize Success');
+				playerAuthorized = true;
+			})
+			.then(()=>{
+				initPlayer().then(()=>{
+					console.log('Plugin Authorize CheckStatus');
+					myGameInstance.SendMessage('YandexAPI', 'CheckAuthorizedStatus');
+				})
+				.then(()=>{
+					myGameInstance.SendMessage('YandexAPI', 'LoadYandexProgressAfterAuthorization');
+				})
+				.catch(err => {
+                        // Player object init error.
+                });
+				})
+				.catch(() => {
                     // Player not authorized.
                 });
-				console.log('AuthorizePlayer end if');
-			}
-			else
-			{
-				playerAuthorized = true;
-				console.log('Plugin Authorized');
-			}
-		}).catch(err => {
-			// Player object initialization error.
-		});  */
-		
+		}
+		else {
+			playerAuthorized = true;
+			console.log('Plugin Authorized');
+		}
+		*/
 	},
 	
 	PlayerAuthorized : function () {
