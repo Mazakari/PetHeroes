@@ -7,7 +7,6 @@ public class Localization : MonoBehaviour
 
     [SerializeField] private string _russianText;
     [SerializeField] private string _englishText;
-    [SerializeField] private string _turkishText;
 
     private ILanguageService _languageService;
 
@@ -30,7 +29,6 @@ public class Localization : MonoBehaviour
             {
                 LanguageService.CurrentLanguage.Ru => _russianText,
                 LanguageService.CurrentLanguage.En => _englishText,
-                LanguageService.CurrentLanguage.Tr => _turkishText,
                 _ => _englishText,
             };
         }

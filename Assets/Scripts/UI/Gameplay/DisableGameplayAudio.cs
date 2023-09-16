@@ -9,16 +9,15 @@ public class DisableGameplayAudio : MonoBehaviour
     {
         _volumeControl = FindObjectOfType<VolumeControl>();
 
-        YandexAPI.OnYandexAdsStart += DisableAudio;
-        YandexAPI.OnYandexAdsEnd += EnableAudio;
+        // Disable sounds on ads start
+        // Subscribe ads start callback
     }
 
     private void OnDisable()
     {
-        YandexAPI.OnYandexAdsStart -= DisableAudio;
-        YandexAPI.OnYandexAdsEnd -= EnableAudio;
+        // Unsubscribe ads start callback
     }
-   
+
     private void DisableAudio()
     {
         if (_volumeControl != null)

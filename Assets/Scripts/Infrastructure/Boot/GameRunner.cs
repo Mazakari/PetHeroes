@@ -3,7 +3,6 @@
 public class GameRunner : MonoBehaviour
 {
     [SerializeField] private GameBootstrapper _bootstrapperPrefab;
-    [SerializeField] private YandexAPI _yandexApi;
 
     private void Awake() => 
         InstantiateBootstrapper();

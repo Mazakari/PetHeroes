@@ -4,14 +4,12 @@ public class BootstrapState : IState
 {
     private readonly GameStateMachine _gameStateMachine;
     private readonly SceneLoader _sceneLoader;
-    private readonly YandexAPI _yandexApi;
     private readonly AllServices _services;
 
-    public BootstrapState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, YandexAPI yandexAPI, AllServices services)
+    public BootstrapState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, AllServices services)
     {
         _gameStateMachine = gameStateMachine;
         _sceneLoader = sceneLoader;
-        _yandexApi = yandexAPI;
         _services = services;
 
         RegisterServices();
@@ -40,10 +38,9 @@ public class BootstrapState : IState
         _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
         _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>()));
         _services.RegisterSingle<ITimeService>(new TimeService());
-        _services.RegisterSingle<IYandexService>(new YandexService(_yandexApi, _services.Single<ITimeService>()));
-        _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>(), _services.Single<IYandexService>()));
+        _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>()));
         _services.RegisterSingle<ILevelCellsService>(new LevelCellsService(_services.Single<IGameFactory>(), _sceneLoader));
-        _services.RegisterSingle<ILanguageService>(new LanguageService(_services.Single<IYandexService>()));
+        _services.RegisterSingle<ILanguageService>(new LanguageService());
         _services.RegisterSingle<ILevelProgressService>(new LevelProgressService());
         _services.RegisterSingle<IDropService>(new DropService());
         _services.RegisterSingle<IMetaResourcesService>(new MetaResources());

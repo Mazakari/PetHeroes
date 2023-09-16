@@ -30,9 +30,6 @@ public class MainMenuCanvas : MonoBehaviour, ISavedProgress
 
     private void OnEnable()
     {
-        InitYandexProgressResetButton();
-        MainMenuState.OnAuthorizationPlayerProgressSynced += OverwriteLevelCellsData;
-
         _levelCellsService = AllServices.Container.Single<ILevelCellsService>();
         SettingsPopup.OnSettingsSaved += HideSettingsPopup;
 
@@ -41,13 +38,7 @@ public class MainMenuCanvas : MonoBehaviour, ISavedProgress
     private void Start() => 
         InitLevelsSelectionPopup();
 
-    private void OnDisable()
-    {
-        SettingsPopup.OnSettingsSaved -= HideSettingsPopup;
-        MainMenuState.OnAuthorizationPlayerProgressSynced -= OverwriteLevelCellsData;
-    }
-
-    
+    private void OnDisable() => SettingsPopup.OnSettingsSaved -= HideSettingsPopup;
 
     public void ShowSelectLevelsPopup()
     {
@@ -95,13 +86,6 @@ public class MainMenuCanvas : MonoBehaviour, ISavedProgress
         LevelCell cell = _levelCellsService.Levels[i];
         cell.transform.SetParent(_levelSelectionContent);
         cell.GetComponent<RectTransform>().localScale = Vector3.one;
-    }
-    private void InitYandexProgressResetButton()
-    {
-        _yandexProgressResetButton.gameObject.SetActive(false);
-#if !UNITY_EDITOR
-       _yandexProgressResetButton.gameObject.SetActive(true);
-#endif
     }
 
     public void UpdateProgress(PlayerProgress progress) {}

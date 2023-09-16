@@ -39,13 +39,8 @@ public class Constants
     public const string LEVELS_DATA_SO_PATH = "Prefabs/LevelSelection/LevelsDataSO";
     #endregion
 
-    #region YANDEX DATA
-    public const string SHOW_YANDEX_RATE_GAME_POPUP_LEVEL = "Level5";
-    #endregion
-
     #region LOCALIZATION
-    public const string LOCALIZARION_RU = "ru";
-    public const string LOCALIZARION_EN = "en";
-    public const string LOCALIZARION_TR = "tr";
+    public const string LOCALIZARION_RU = "Russian";
+    public const string LOCALIZARION_EN = "English";
     #endregion
 }

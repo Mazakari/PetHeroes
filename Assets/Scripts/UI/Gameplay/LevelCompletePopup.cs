@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LevelCompletePopup : MonoBehaviour
 {
-    [SerializeField] private GameObject _yandexRewardedBlock;
+    //[SerializeField] private GameObject _rewardedBlock;
     [SerializeField] private TMP_Text _totalScoresCounter;
 
     [Space(10)]
@@ -11,22 +11,23 @@ public class LevelCompletePopup : MonoBehaviour
     [SerializeField] private ItemSound _itemSound;
 
     private ISaveLoadService _saveLoadService;
-    private IYandexService _yandexService;
     private ILevelProgressService _levelProgressService;
 
     private void OnEnable()
     {
         _saveLoadService = AllServices.Container.Single<ISaveLoadService>();
-        _yandexService = AllServices.Container.Single<IYandexService>();
         _levelProgressService = AllServices.Container.Single<ILevelProgressService>();
 
-        _yandexService.API.OnRewardedVideoWatched += AddRewardedBonus;
+        // TO DO replace with myTargetRewarded
+        //_yandexService.API.OnRewardedVideoWatched += AddRewardedBonus;
 
         UpdateTotalScoreCounter();
 
-        ShowYandexRewardedButton();
+        // TO DO replace with myTargetRewarded
+        //ShowRewardedButton();
+
 #if !UNITY_EDITOR
-        ShowInterstitialAds();
+        //ShowInterstitialAds();
 #endif
         // SaveProgress
         SaveProgress();
@@ -34,19 +35,24 @@ public class LevelCompletePopup : MonoBehaviour
         PlayLevelCompleteSound();
     }
 
-    private void OnDisable() => 
-        _yandexService.API.OnRewardedVideoWatched -= AddRewardedBonus;
-  
+    private void OnDisable()
+    {
+        // TO DO replace with myTargetRewarded
+        //_yandexService.API.OnRewardedVideoWatched -= AddRewardedBonus;
+    }
+
     public void RestartLevel() =>
        GameplayCanvas.OnRestartLevel?.Invoke();
 
     public void LoadNextLevel() =>
         GameplayCanvas.OnNextLevel?.Invoke();
 
-    private void ShowYandexRewardedButton()
+    // TO DO replace with myTargetRewarded
+    private void ShowRewardedButton()
     {
+
         bool showRewardedButton = _levelProgressService.PlayerScores > 0;
-        _yandexRewardedBlock.SetActive(showRewardedButton);
+        //_rewardedBlock.SetActive(showRewardedButton);
     }
 
     private void AddRewardedBonus()
@@ -71,6 +77,7 @@ public class LevelCompletePopup : MonoBehaviour
     private void PlayLevelCompleteSound() =>
           _itemSound.Play();
 
-    private void ShowInterstitialAds() =>
-       _yandexService.API.ShowYandexInterstitial();
+    // TO DO replace with myTarget
+    //private void ShowInterstitialAds() =>
+    //   _yandexService.API.ShowYandexInterstitial();
 }

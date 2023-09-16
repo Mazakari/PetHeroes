@@ -6,36 +6,28 @@ public class LanguageService : ILanguageService
     {
         Ru,
         En,
-        Tr
     }
 
     public CurrentLanguage Language { get; private set; }
 
-    private string _language;
+    private SystemLanguage _language;
 
-    private readonly IYandexService _yandexService;
-   
-
-    public LanguageService(IYandexService yandexService)
+    public LanguageService()
     {
-        _yandexService = yandexService;
-
-#if !UNITY_EDITOR
         SetSystemLanguage();
         Debug.Log($"System language = {_language}");
         Debug.Log($"CurrentLanguage = {Language}");
-#endif
+
     }
 
     private void SetSystemLanguage()
     {
-        _language = _yandexService.API.GetPlatformLanguage();
+        _language = Application.systemLanguage;
 
         Language = _language switch
         {
-            Constants.LOCALIZARION_RU => CurrentLanguage.Ru,
-            Constants.LOCALIZARION_EN => CurrentLanguage.En,
-            Constants.LOCALIZARION_TR => CurrentLanguage.Tr,
+            SystemLanguage.English => CurrentLanguage.En,
+            SystemLanguage.Russian => CurrentLanguage.Ru,
             _ => CurrentLanguage.En,
         };
     }

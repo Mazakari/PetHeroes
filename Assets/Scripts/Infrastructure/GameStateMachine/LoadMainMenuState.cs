@@ -8,7 +8,6 @@ public class LoadMainMenuState : IPayloadedState<string>
     private readonly LoadingCurtain _curtain;
     private readonly IPersistentProgressService _progressService;
     private readonly ILevelCellsService _cellsService;
-    private readonly IYandexService _yandexService;
 
     public LoadMainMenuState(
         GameStateMachine gameStateMachine, 
@@ -16,8 +15,7 @@ public class LoadMainMenuState : IPayloadedState<string>
         LoadingCurtain curtain, 
         IGameFactory gameFactory, 
         IPersistentProgressService progressService, 
-        ILevelCellsService cellsService,
-        IYandexService yandexService)
+        ILevelCellsService cellsService)
     {
         _gameStateMachine = gameStateMachine;
         _sceneLoader = sceneLoader;
@@ -26,7 +24,6 @@ public class LoadMainMenuState : IPayloadedState<string>
         _gameFactory = gameFactory;
         _progressService = progressService;
         _cellsService = cellsService;
-        _yandexService = yandexService;
     }
 
     public void Enter(string sceneName)
@@ -50,15 +47,8 @@ public class LoadMainMenuState : IPayloadedState<string>
         _gameStateMachine.Enter<MainMenuState>();
     }
 
-    private void InitMainMenu()
-    {
+    private void InitMainMenu() => 
         _gameFactory.CreateMainMenulHud();
-
-#if !UNITY_EDITOR
-
-        CheckPlayerAuth();
-#endif
-    }
 
     private void InitVolumeControl()
     {
@@ -78,7 +68,4 @@ public class LoadMainMenuState : IPayloadedState<string>
             progressReader.LoadProgress(_progressService.Progress);
         }
     }
-
-    private void CheckPlayerAuth() =>
-       _yandexService.API.CheckAuthorizedStatus();
 }
